@@ -220,6 +220,16 @@ export default function AnimalModal({
                 <span>WhatsApp</span>
               </a>
             </div>
+
+            <div className="pt-3 text-center">
+              <Link
+                href={`/herd/${animal.slug}`}
+                onClick={onClose}
+                className="text-xs font-semibold text-[#8a6f43] hover:text-[#b08d57] underline underline-offset-2"
+              >
+                Open {animal.name}&apos;s full page →
+              </Link>
+            </div>
           </div>
         </div>
       </div>

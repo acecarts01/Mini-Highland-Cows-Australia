@@ -1,7 +1,8 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumbSchema } from '@/lib/seo';
 import { SITE, CONTACT } from '@/lib/site-config';
 import {
   ShieldCheck,
@@ -17,9 +18,29 @@ import {
   Phone,
 } from 'lucide-react';
 
+export const metadata: Metadata = {
+  title: 'About Our Roma QLD Miniature Highland Stud & PIC Compliance',
+  description:
+    'MHC PTY LTD (ABN 23 158 390 973) is an ASIC-registered miniature Highland cattle stud in Roma, Queensland. Learn about our closed-herd biosecurity, Chondro testing policy, and Australian PIC/NLIS compliance.',
+  alternates: { canonical: '/about' },
+  openGraph: {
+    title: 'About Mini Highland Cows | Roma QLD Miniature Highland Stud',
+    description:
+      'ASIC-registered miniature and micro Scottish Highland cattle stud in Roma, Queensland. Chondro-tested, halter-trained, PIC/NLIS compliant.',
+    url: '/about',
+  },
+};
+
 export default function AboutPage() {
   return (
     <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-12">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'About Stud & PIC Compliance', path: '/about' },
+        ])}
+      />
+
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-xs text-gray-500">
         <Link href="/" className="hover:text-[#b08d57]">Home</Link>

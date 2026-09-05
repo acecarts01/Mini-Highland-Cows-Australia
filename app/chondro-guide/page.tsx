@@ -1,12 +1,39 @@
-'use client';
-
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Ruler, ShieldCheck, AlertTriangle, CheckCircle2, Award, Info, Heart } from 'lucide-react';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumbSchema } from '@/lib/seo';
+
+export const metadata: Metadata = {
+  title: 'Chondrodysplasia in Mini Highland Cattle: Carrier vs Non-Carrier Guide',
+  description:
+    'What Chondro (chondrodysplasia) means in miniature Highland cattle, how carrier and non-carrier genetics differ, and why every MHC animal is DNA tested and disclosed. Australian buyer guide.',
+  keywords: [
+    'chondrodysplasia mini highland cattle',
+    'chondro negative miniature highland',
+    'mini highland cow dwarfism gene',
+    'micro highland cattle genetics Australia',
+  ],
+  alternates: { canonical: '/chondro-guide' },
+  openGraph: {
+    title: 'Chondrodysplasia Genetics in Mini Highland Cattle',
+    description:
+      'Carrier vs non-carrier explained, and why we DNA test and publish Chondro status for every animal.',
+    url: '/chondro-guide',
+  },
+};
 
 export default function ChondroGuidePage() {
   return (
     <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
+      <JsonLd
+        data={breadcrumbSchema([
+          { name: 'Home', path: '/' },
+          { name: 'Chondro Genetics Protocol', path: '/chondro-guide' },
+        ])}
+      />
+
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-xs text-gray-500">
         <Link href="/" className="hover:text-[#b08d57]">Home</Link>

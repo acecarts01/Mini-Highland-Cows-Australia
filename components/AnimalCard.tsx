@@ -138,7 +138,9 @@ export default function AnimalCard({
           <div className="flex items-start justify-between gap-2">
             <div>
               <h3 className="font-serif text-xl font-bold text-[#232320] group-hover:text-[#b08d57] transition-colors">
-                {animal.name}
+                <Link href={`/herd/${animal.slug}`} className="hover:underline decoration-[#b08d57]/60">
+                  {animal.name}
+                </Link>
               </h3>
               <p className="text-xs text-[#705d48] font-medium">
                 {animal.category === 'care-equipment'
@@ -232,16 +234,23 @@ export default function AnimalCard({
             </motion.button>
           </div>
 
-          <motion.button
-            whileHover={{ scale: 1.02, backgroundColor: '#fcfaf6', borderColor: '#b08d57' }}
+          {/*
+            A real anchor, not a modal trigger: this is the crawlable path to the
+            animal's own page. The image click above still opens the quick-look modal.
+          */}
+          <motion.div
+            whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.18 }}
-            onClick={() => onInspect(animal)}
-            className="w-full py-2 px-3 border border-[#cfc4af] rounded-lg text-[11px] font-semibold text-[#40382d] hover:text-[#232320] transition-colors flex items-center justify-center gap-1 shadow-2xs"
           >
-            <FileSearch className="w-3.5 h-3.5 text-[#b08d57]" />
-            {animal.category === 'care-equipment' ? 'View Full Product & Freight Specs' : 'View Full Specs & NLIS Ear Tag'}
-          </motion.button>
+            <Link
+              href={`/herd/${animal.slug}`}
+              className="w-full py-2 px-3 border border-[#cfc4af] hover:border-[#b08d57] hover:bg-[#fcfaf6] rounded-lg text-[11px] font-semibold text-[#40382d] hover:text-[#232320] transition-colors flex items-center justify-center gap-1 shadow-2xs"
+            >
+              <FileSearch className="w-3.5 h-3.5 text-[#b08d57]" />
+              {animal.category === 'care-equipment' ? 'View Full Product & Freight Specs' : 'View Full Specs & NLIS Ear Tag'}
+            </Link>
+          </motion.div>
         </div>
       </div>
     </motion.article>

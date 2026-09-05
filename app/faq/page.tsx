@@ -1,15 +1,38 @@
-'use client';
-
-import React, { useState } from 'react';
+import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import { FAQ_ITEMS, CONTACT } from '@/lib/site-config';
-import { HelpCircle, ChevronDown, MessageCircle, Phone, ArrowRight } from 'lucide-react';
+import { HelpCircle, MessageCircle } from 'lucide-react';
+import JsonLd from '@/components/JsonLd';
+import { breadcrumbSchema, faqSchema } from '@/lib/seo';
+import FaqAccordion from './faq-accordion';
+
+export const metadata: Metadata = {
+  title: 'Mini Highland Cow FAQ: Acreage, PIC, NLIS & Chondro Testing',
+  description:
+    'Answers for Australian buyers: how much acreage a miniature Highland cow needs, how PIC registration and NLIS transfers work, Chondro testing policy, delivery, and payment.',
+  alternates: { canonical: '/faq' },
+  openGraph: {
+    title: 'Mini Highland Cow Buyer FAQ | MHC PTY LTD',
+    description:
+      'Acreage, PIC registration, NLIS transfer, Chondro genetics, delivery and payment questions answered.',
+    url: '/faq',
+  },
+};
 
 export default function FAQPage() {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
   return (
     <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-10">
+      <JsonLd
+        data={[
+          faqSchema(FAQ_ITEMS, '/faq'),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Frequently Asked Questions', path: '/faq' },
+          ]),
+        ]}
+      />
+
       {/* Breadcrumb */}
       <div className="flex items-center gap-2 text-xs text-gray-500">
         <Link href="/" className="hover:text-[#b08d57]">Home</Link>
@@ -21,7 +44,7 @@ export default function FAQPage() {
       <div className="border-b border-[#e5dec9] pb-8 space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ebdcb9] text-[#6d4c1b] text-xs font-bold uppercase tracking-wider">
           <HelpCircle className="w-3.5 h-3.5" />
-          Buyer & Acreage Guide
+          Buyer &amp; Acreage Guide
         </div>
         <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#232320]">
           Frequently Asked Questions
@@ -31,37 +54,7 @@ export default function FAQPage() {
         </p>
       </div>
 
-      {/* Accordion */}
-      <div className="space-y-3">
-        {FAQ_ITEMS.map((item, idx) => {
-          const isOpen = openIndex === idx;
-          return (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl border border-[#e5dec9] overflow-hidden transition-all shadow-xs"
-            >
-              <button
-                onClick={() => setOpenIndex(isOpen ? null : idx)}
-                className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 font-serif text-base sm:text-lg font-bold text-[#232320] hover:text-[#b08d57] transition-colors"
-                aria-expanded={isOpen}
-              >
-                <span>{item.question}</span>
-                <ChevronDown
-                  className={`w-5 h-5 text-[#b08d57] shrink-0 transition-transform duration-200 ${
-                    isOpen ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-
-              {isOpen && (
-                <div className="px-5 pb-6 sm:px-6 pt-1 text-xs sm:text-sm text-gray-700 leading-relaxed border-t border-[#f0ebd9] mt-1 bg-[#fcfbf9]">
-                  {item.answer}
-                </div>
-              )}
-            </div>
-          );
-        })}
-      </div>
+      <FaqAccordion items={FAQ_ITEMS} />
 
       {/* Need more help */}
       <div className="p-6 sm:p-8 bg-[#1c3028] text-white rounded-3xl border border-[#375a4d] flex flex-col sm:flex-row items-center justify-between gap-6">

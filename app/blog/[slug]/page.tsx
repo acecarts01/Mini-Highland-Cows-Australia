@@ -1,9 +1,12 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { BLOG_POSTS, SITE } from '@/lib/site-config';
 import { ChevronRight, Calendar, Clock, ArrowLeft, ShieldCheck, Truck, BookOpen, MessageCircle } from 'lucide-react';
+import JsonLd from '@/components/JsonLd';
+import { articleSchema, breadcrumbSchema } from '@/lib/seo';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -15,6 +18,37 @@ export async function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({ params }: BlogPostPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = BLOG_POSTS.find((p) => p.slug === slug);
+
+  if (!post) {
+    return { title: 'Guide Not Found' };
+  }
+
+  const canonicalPath = `/blog/${post.slug}`;
+
+  return {
+    title: post.title,
+    description: post.excerpt,
+    alternates: { canonical: canonicalPath },
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      url: canonicalPath,
+      type: 'article',
+      publishedTime: post.datePublished,
+      images: [{ url: post.image, alt: post.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: [post.image],
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
@@ -159,6 +193,17 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
 
   return (
     <div className="space-y-10 pb-20">
+      <JsonLd
+        data={[
+          articleSchema(post),
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Blog', path: '/blog' },
+            { name: post.title, path: `/blog/${post.slug}` },
+          ]),
+        ]}
+      />
+
       {/* 1. Breadcrumbs */}
       <div className="bg-[#fbf9f5] border-b border-[#e5dec9] py-4">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">

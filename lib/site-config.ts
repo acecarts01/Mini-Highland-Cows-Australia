@@ -1269,6 +1269,7 @@ export const BLOG_POSTS = [
     excerpt:
       'A realistic, transparent breakdown of miniature and micro Highland cattle pricing across Australia, covering pet steers, breeding foundation heifers, and in-calf pairs.',
     date: 'February 2025',
+    datePublished: '2025-02-01',
     readTime: '6 min read',
     image: '/images/isla-silver-micro-heifer.webp',
   },
@@ -1278,6 +1279,7 @@ export const BLOG_POSTS = [
     excerpt:
       'Everything lifestyle acreage owners need to know about official hip height standards, adult weight ranges, and responsible Chondrodysplasia genetics.',
     date: 'January 2025',
+    datePublished: '2025-01-01',
     readTime: '8 min read',
     image: '/images/thistle-snow-white-micro-heifer.webp',
   },
@@ -1287,6 +1289,7 @@ export const BLOG_POSTS = [
     excerpt:
       'A complete step-by-step guide on how to register your lifestyle acreage for a PIC, understand NLIS electronic RFID ear tags, and comply with state biosecurity laws.',
     date: 'December 2024',
+    datePublished: '2024-12-01',
     readTime: '7 min read',
     image: '/images/bramble-jet-black-micro-heifer.webp',
   },
@@ -1296,6 +1299,7 @@ export const BLOG_POSTS = [
     excerpt:
       'Docile, loving, and easy to manage—discover why desexed miniature steers are the #1 choice for Australian families, hobby farmers, and lifestyle acreage owners seeking gentle paddock pets.',
     date: 'March 2025',
+    datePublished: '2025-03-04',
     readTime: '6 min read',
     image: '/images/paddock-companion-steers.webp',
   },
@@ -1305,6 +1309,7 @@ export const BLOG_POSTS = [
     excerpt:
       'Master the Scottish double-coat: high-velocity livestock blowers, scotch combs, fly defense, and winter conditioning for healthy, radiant paddock and show cattle.',
     date: 'March 2025',
+    datePublished: '2025-03-12',
     readTime: '7 min read',
     image: '/images/grooming-blower-pro-care.webp',
   },
@@ -1314,6 +1319,7 @@ export const BLOG_POSTS = [
     excerpt:
       'A breeder’s guide to bloodlines, pedigree registration, pasture rotation, and managing your first calving season on Australian acreage with matched foundation pairs.',
     date: 'March 2025',
+    datePublished: '2025-03-20',
     readTime: '9 min read',
     image: '/images/hamish-and-hazel-foundation-pair.webp',
   },

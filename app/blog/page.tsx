@@ -1,17 +1,45 @@
 import React from 'react';
+import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { BLOG_POSTS, SITE, CONTACT } from '@/lib/site-config';
 import { Sparkles, Calendar, Clock, ArrowRight, BookOpen, ShieldCheck, ChevronRight } from 'lucide-react';
+import JsonLd from '@/components/JsonLd';
+import { absoluteUrl, articleSchema, breadcrumbSchema } from '@/lib/seo';
 
-export const metadata = {
-  title: 'Educational Guides & Livestock Care Blog | Mini Highland Cows',
-  description: 'Expert guides on miniature Scottish Highland cattle care, pricing, chondrodysplasia genetics, and Australian PIC/NLIS livestock transfer regulations.',
+export const metadata: Metadata = {
+  title: 'Miniature Highland Cattle Guides & Care Blog',
+  description:
+    'Expert guides on miniature Scottish Highland cattle care, pricing, chondrodysplasia genetics, and Australian PIC/NLIS livestock transfer regulations.',
+  alternates: { canonical: '/blog' },
+  openGraph: {
+    title: 'Miniature Highland Cattle Guides & Care Blog',
+    description:
+      'Care, pricing, genetics, and Australian livestock compliance guides from our Roma QLD stud.',
+    url: '/blog',
+  },
 };
 
 export default function BlogIndexPage() {
   return (
     <div className="space-y-12 pb-20">
+      <JsonLd
+        data={[
+          {
+            '@context': 'https://schema.org',
+            '@type': 'Blog',
+            '@id': `${absoluteUrl('/blog')}#blog`,
+            name: 'Miniature Highland Cattle Guides & Care Blog',
+            url: absoluteUrl('/blog'),
+            publisher: { '@id': absoluteUrl('/#organization') },
+            blogPost: BLOG_POSTS.map((post) => articleSchema(post)),
+          },
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Blog', path: '/blog' },
+          ]),
+        ]}
+      />
       {/* 1. Header Banner */}
       <section className="bg-gradient-to-b from-[#ebdcb9]/40 to-transparent pt-10 pb-6">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
