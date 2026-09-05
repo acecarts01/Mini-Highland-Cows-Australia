@@ -1,0 +1,77 @@
+'use client';
+
+import React from 'react';
+import { EnquiryProvider, useEnquiry } from '@/lib/enquiry-context';
+import Navbar from './Navbar';
+import EnquiryDrawer from './EnquiryDrawer';
+import AnimalModal from './AnimalModal';
+import SearchModal from './SearchModal';
+import ChatHub from './ChatHub';
+import Footer from './Footer';
+
+function LayoutInner({ children }: { children: React.ReactNode }) {
+  const {
+    enquiryList,
+    isDrawerOpen,
+    setIsDrawerOpen,
+    isSearchOpen,
+    setIsSearchOpen,
+    inspectedAnimal,
+    setInspectedAnimal,
+    toggleEnquiry,
+    removeEnquiry,
+    clearEnquiry,
+  } = useEnquiry();
+
+  return (
+    <div className="min-h-screen flex flex-col bg-[#fbf9f5]">
+      <Navbar
+        enquiryCount={enquiryList.length}
+        onOpenEnquiryDrawer={() => setIsDrawerOpen(true)}
+        onOpenSearch={() => setIsSearchOpen(true)}
+      />
+
+      <main className="flex-1">
+        {children}
+      </main>
+
+      <Footer />
+
+      {/* Shared Modals & Drawers */}
+      <EnquiryDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        enquiredAnimals={enquiryList}
+        onRemove={removeEnquiry}
+        onClear={clearEnquiry}
+      />
+
+      <AnimalModal
+        animal={inspectedAnimal}
+        isOpen={!!inspectedAnimal}
+        onClose={() => setInspectedAnimal(null)}
+        isEnquired={inspectedAnimal ? enquiryList.some((a) => a.id === inspectedAnimal.id) : false}
+        onToggleEnquiry={toggleEnquiry}
+      />
+
+      <SearchModal
+        isOpen={isSearchOpen}
+        onClose={() => setIsSearchOpen(false)}
+        onSelectAnimal={(animal) => {
+          setIsSearchOpen(false);
+          setInspectedAnimal(animal);
+        }}
+      />
+
+      <ChatHub />
+    </div>
+  );
+}
+
+export default function SiteLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <EnquiryProvider>
+      <LayoutInner>{children}</LayoutInner>
+    </EnquiryProvider>
+  );
+}

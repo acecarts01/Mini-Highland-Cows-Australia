@@ -1,0 +1,6 @@
+{
+  "name": "Mini Highland Cows (MHC PTY LTD)",
+  "description": "Australia's premier breeder of miniature and micro Highland cattle in Roma QLD. Live registered heifers, steers, and cows in calf with radical Chondro transparency.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
