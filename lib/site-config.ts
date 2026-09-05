@@ -216,7 +216,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus tested negative, multimin 4+ selenium drenched',
     shortDescription: 'Ultra-rare platinum silver micro heifer with dense double coat. Non-chondro genetics.',
     fullDescription: 'Aila is an extraordinary showcase of miniature Scottish Highland genetics. Standing just 34 inches at 14 months, she boasts a true silver frost coat with thick ear fringes and impeccable square conformation. DNA tested negative for chondrodysplasia.',
-    image: '/images/aila-silver-micro-heifer.webp',
+    image: '/images/isla-silver-micro-heifer.webp',
     imageSourcingPrompt: 'Silver grey miniature highland cow heifer standing in Australian paddock pasture, long woolly silver coat, gentle brown eyes, small curved horns, natural daylight 4:3 ratio',
   },
   {
@@ -324,7 +324,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus tested negative, drenched',
     shortDescription: 'Charming smoky dun miniature heifer. Traditional Scottish heritage coloration.',
     fullDescription: 'Heather showcases the iconic slate-grey smoky dun coat prized in Scottish herd books. Dense woolly undercoat suited to all Australian climates from Southern Highlands frost to Roma heat.',
-    image: '/images/isla-silver-micro-heifer.webp',
+    image: '/images/heather-smoky-dun-miniature-heifer.webp',
     imageSourcingPrompt: 'Smoky dun grey miniature highland cow with thick wool coat grazing in green meadow pasture, gentle eyes, 4:3 ratio',
   },
   {
@@ -351,7 +351,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, Multimin drenched',
     shortDescription: 'Sensational platinum silver heifer with silver frost mane and black hooves.',
     fullDescription: 'Bonnie is an absolute showstopper. Her coat is an ethereal silvery white with dark charcoal skin pigmentation protecting against sunburn. Exceptional pedigree tracking back to Balgownie imported genetics.',
-    image: '/images/isla-silver-micro-heifer.webp',
+    image: '/images/bonnie-platinum-silver-miniature-heifer.webp',
     imageSourcingPrompt: 'Platinum silver miniature highland cow standing proudly in paddock, thick silver fleece, black muzzle, gentle expression, natural lighting 4:3 ratio',
   },
   {
@@ -378,7 +378,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, BVDV clear, drench complete',
     shortDescription: 'White fleece with distinct black ear tips, black nose, and black hooves.',
     fullDescription: 'Ember features the sought-after Highpark pointed pattern. Her coat is brilliant ivory white offset by jet-black ear tips, eyeliner pigmentation, and dark hooves. High genetic vigor and great maternal instincts.',
-    image: '/images/thistle-snow-white-micro-heifer.webp',
+    image: '/images/ember-highpark-pointed-miniature-heifer.webp',
     imageSourcingPrompt: 'White miniature highland cow heifer with black ears and black nose points Highpark markings in green Australian pasture 4:3 ratio',
   },
   {
@@ -405,7 +405,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, drenched',
     shortDescription: 'Vibrant ruby red miniature heifer with long cascading forelock.',
     fullDescription: 'Wren embodies the timeless Scottish Highland aesthetic with a deep, rich mahogany red coat. Thickly fleshed over the loin with strong legs and balanced feet. Ready for service.',
-    image: '/images/saffron-honey-yellow-miniature-heifer.webp',
+    image: '/images/wren-ruby-red-miniature-heifer.webp',
     imageSourcingPrompt: 'Rich red miniature Scottish highland heifer standing in paddock pasture, reddish brown long coat, symmetrical horns, daylight 4:3',
   },
   {
@@ -432,7 +432,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, BVDV clear, Multimin 4 drenched',
     shortDescription: 'Striking tiger-striped brindle coat with golden undertones.',
     fullDescription: 'Clover exhibits extraordinary brindle patterning with dark espresso tiger stripes undulating across a golden amber ground coat. Perfect confirmation and registration pedigree.',
-    image: '/images/saffron-honey-yellow-miniature-heifer.webp',
+    image: '/images/clover-tiger-brindle-miniature-heifer.webp',
     imageSourcingPrompt: 'Tiger brindle miniature highland cow heifer with dark brown and golden stripes in sunny paddock, long hair, Scottish horns 4:3',
   },
   {
@@ -459,7 +459,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, drenched',
     shortDescription: 'Petite 33-inch champagne yellow micro heifer. Soft silky coat.',
     fullDescription: 'Gemma has a light champagne yellow fleece that shines like spun silk. Compact, stocky, and charming, she has been raised with daily handling on our Roma stud.',
-    image: '/images/saffron-honey-yellow-miniature-heifer.webp',
+    image: '/images/gemma-champagne-yellow-micro-heifer.webp',
     imageSourcingPrompt: 'Champagne yellow micro highland heifer calf in lush grass, petite size, adorable face, long fluffy coat 4:3',
   },
   {
@@ -486,7 +486,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, Multimin clear',
     shortDescription: 'Petite chalk-white micro heifer. Extremely thick double coat.',
     fullDescription: 'Blanche is an exquisite micro specimen. Thick fleece protects against both wind and summer heat. Strong square hip conformation and friendly personality.',
-    image: '/images/thistle-snow-white-micro-heifer.webp',
+    image: '/images/blanche-chalk-white-micro-heifer.webp',
     imageSourcingPrompt: 'Chalk white micro miniature highland cow heifer in paddock, thick white curls, sweet eyes, small frame 4:3',
   },
   {
@@ -513,7 +513,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, drenched',
     shortDescription: 'Ultra-rare silver-brindle combination in a 33-inch micro package.',
     fullDescription: 'Kirsty combines the best of both worlds: rare silver ground color overlaid with subtle charcoal brindle striping. True micro height with excellent leg correctness.',
-    image: '/images/isla-silver-micro-heifer.webp',
+    image: '/images/kirsty-silver-brindle-micro-heifer.webp',
     imageSourcingPrompt: 'Silver brindle micro highland heifer cow standing in green pasture, rare grey and charcoal coat, natural daylight 4:3',
   },
 
@@ -542,7 +542,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: 'Both 7-in-1, BVDV clear, Vibrio vaccinated',
     shortDescription: 'Matched silver micro heifer and unrelated registered bull. Complete stud starter pack.',
     fullDescription: 'An unmatched opportunity to acquire a genetically matched, unrelated foundation breeding pair. Both animals carry verifiable AHCS pedigree certificates and test clean across all biosecurity markers.',
-    image: '/images/hamish-and-hazel-foundation-pair.webp',
+    image: '/images/rory-and-fern-silver-foundation-breeding-pair.webp',
     imageSourcingPrompt: 'Pair of silver miniature highland cows standing together in sunny pasture paddock, bull and heifer pair, majestic Scottish horns 4:3',
   },
   {
@@ -569,7 +569,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, drenched',
     shortDescription: 'Proven red foundation cow. Vet ultrasound confirmed in calf to Champion Silver Bull.',
     fullDescription: 'Maisie has calved once before unassisted with plentiful rich milk. Ultrasound confirmed 4 months in calf to our champion 34-inch silver micro bull Strathbogie Glen. Calving due in 5 months.',
-    image: '/images/saffron-honey-yellow-miniature-heifer.webp',
+    image: '/images/maisie-scottish-red-proven-cow-in-calf.webp',
     imageSourcingPrompt: 'Mature red miniature Scottish highland cow standing in paddock, thick mahogany coat, wide graceful horns, sunny afternoon 4:3',
   },
   {
@@ -596,7 +596,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, drenched',
     shortDescription: 'Silky smoky dun cow. Ultrasound confirmed in calf to Balgownie Finlay.',
     fullDescription: 'Greta carries prestigious Scottish imported genetics. Standing 38 inches with a wide pelvis and great udder attachment. Confirmed pregnant to Balgownie Finlay (imported genetics).',
-    image: '/images/isla-silver-micro-heifer.webp',
+    image: '/images/greta-smoky-dun-cow-in-calf.webp',
     imageSourcingPrompt: 'Smoky dun pregnant miniature highland cow in paddock grass, calm demeanor, thick woolly coat, natural lighting 4:3',
   },
   {
@@ -623,7 +623,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: 'Both 7-in-1, BVDV clear, vaccinated and drenched',
     shortDescription: 'Matched snow-white micro pair. Unrelated genetics for high-value breeding.',
     fullDescription: 'Lachlan (bull) and Morven (heifer) represent our finest white miniature lineage. Both possess brilliant white fleece, dark pigment points, and gentle temperaments. Complete paperwork ready for transfer.',
-    image: '/images/hamish-and-hazel-foundation-pair.webp',
+    image: '/images/lachlan-and-morven-snow-white-premier-stud-pair.webp',
     imageSourcingPrompt: 'Two pure white miniature highland cows together in green grass paddock pasture, peaceful Australian farm setting 4:3',
   },
 
@@ -652,7 +652,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, BVDV clear, Multimin drenched',
     shortDescription: 'Halter-broken brindle micro steer. Docile lap-pet demeanor, naturally polled.',
     fullDescription: 'Angus is the ultimate paddock pet. Desexed, vaccinated, and hand-tamed since birth. He loves children, stands quietly for grooming, and will follow you anywhere on a simple lead rope.',
-    image: '/images/paddock-companion-steers.webp',
+    image: '/images/angus-tiger-brindle-micro-pet-steer.webp',
     imageSourcingPrompt: 'Tiger brindle miniature highland pet steer standing near timber fence, friendly eyes, fluffy face wool, paddock setting 4:3',
   },
   {
@@ -679,7 +679,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, drenched',
     shortDescription: 'Dehorned jet black steer. Fluffy coat and calm, docile temperament.',
     fullDescription: 'Fergus is an ideal acreage lawn mower. Naturally placid, professionally dehorned as a calf with smooth rounded skull, and completely desexed. Exceptional companion for horses or sheep.',
-    image: '/images/bramble-jet-black-micro-heifer.webp',
+    image: '/images/fergus-jet-black-miniature-pet-steer.webp',
     imageSourcingPrompt: 'Fluffy jet black miniature highland steer in green pasture, hornless rounded head, gentle demeanor 4:3',
   },
   {
@@ -706,7 +706,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, Multimin clear',
     shortDescription: 'Fluffy snow-white micro steer. 33 inches tall with teddy bear appeal.',
     fullDescription: 'Archie steals every visitor\'s heart. Fluffy white fleece that stands out like a cloud, short legs, and an unshakeable love for human company. Halter-broken and easy to lead.',
-    image: '/images/archie-snow-white-micro-steer.webp',
+    image: '/images/archie-snow-white-micro-pet-steer.webp',
     imageSourcingPrompt: 'Pure white fluffy miniature highland pet steer in pasture, woolly bangs over eyes, friendly teddy bear look 4:3',
   },
   {
@@ -733,7 +733,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, drenched',
     shortDescription: 'Traditional red miniature steer with grand Scottish horns and sweet demeanor.',
     fullDescription: 'Clyde is the classic paddock picture: rich red coat, dignified horns, and a gentle grazing demeanor. Excellent lawn keeper for 1-5 acre properties.',
-    image: '/images/saffron-honey-yellow-miniature-heifer.webp',
+    image: '/images/clyde-classic-scottish-red-miniature-steer.webp',
     imageSourcingPrompt: 'Classic Scottish red miniature highland steer grazing peaceful green pasture, iconic horns, daylight 4:3',
   },
   {
@@ -760,7 +760,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1, Pestivirus negative, Multimin clear',
     shortDescription: 'Platinum silver micro steer. Rare fleece color with placid disposition.',
     fullDescription: 'Finley brings the luxury of the rare silver coat at a pet steer price point. Desexed, micro-sized at 34 inches, and eager to please.',
-    image: '/images/archie-snow-white-micro-steer.webp',
+    image: '/images/finley-platinum-silver-micro-steer.webp',
     imageSourcingPrompt: 'Silver grey miniature highland steer standing near farm shed, calm posture, thick woolly coat 4:3',
   },
 
@@ -789,7 +789,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1 initial + booster, drenched',
     shortDescription: 'Adorable silver micro weaner steer calf. Just 26 inches at hip.',
     fullDescription: 'Pip is fully weaned onto pasture, sweet stud muesli, and prime Lucerne hay. Super fluffy silver coat and tiny proportions make him an immediate favorite.',
-    image: '/images/isla-silver-micro-heifer.webp',
+    image: '/images/pip-silver-micro-weaned-steer-calf.webp',
     imageSourcingPrompt: 'Tiny silver grey baby mini highland steer calf in green clover field, big curious dark eyes, fluffy wool 4:3',
   },
   {
@@ -816,7 +816,7 @@ export const PRODUCTS: AnimalProduct[] = [
     vaccination: '7-in-1 initial + booster, Multimin 4 clear',
     shortDescription: 'Rare pure snow-white bottle baby micro heifer. Hand-raised and deeply affectionate.',
     fullDescription: 'Buttons is an ultra-rare snow-white heifer calf raised on calf formula bottles. Bonded deeply with humans, she will follow you into the house if you let her. Eating Lucerne hay and calf pellets.',
-    image: '/images/thistle-snow-white-micro-heifer.webp',
+    image: '/images/buttons-snow-white-bottle-baby-heifer-calf.webp',
     imageSourcingPrompt: 'Adorable tiny white fluffy baby highland heifer calf drinking from bottle or standing in barn straw bedding, large sweet eyes 4:3',
   },
 
@@ -845,7 +845,7 @@ export const PRODUCTS: AnimalProduct[] = [
     compatibility: 'Engineered specifically for thick Scottish Highland double-coats',
     shortDescription: 'High-velocity 4.0HP dual-motor dryer. Blasts debris out of dense Highland wool without heat damage.',
     fullDescription: 'The ultimate grooming tool for Scottish Highland cattle. Traditional dog dryers cannot penetrate the dense double coat of a Highland cow. This heavy-duty dual-motor blower produces 68,000 FPM airspeed to fluff the undercoat, remove dry grass seeds, and speed dry after rain or show baths. Includes 3 heavy-duty nozzles and anti-kink flex hose.',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/royal-highland-master-show-blower-dryer.webp',
     imageSourcingPrompt: 'Professional livestock high velocity dual motor cattle blow dryer machine with heavy duty flex hose and aluminum nozzle on clean barn floor, cattle show grooming equipment 4:3',
   },
   {
@@ -869,7 +869,7 @@ export const PRODUCTS: AnimalProduct[] = [
     compatibility: 'Fits Micro & Miniature Highlands from 6 Months to Mature',
     shortDescription: 'Handcrafted Australian bridle leather halter with British solid brass buckles and weighted lead chain.',
     fullDescription: 'Meticulously crafted by master Australian saddlers from vegetable-tanned full-grain bridle leather. Designed specifically with wider cheekpieces and a padded crown to comfortably accommodate the broad brow and horn base of miniature Scottish Highland cattle. Includes a matching 3-meter leather lead with solid British brass chain.',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/bespoke-bridle-leather-show-halter-lead.webp',
     imageSourcingPrompt: 'Luxury handcrafted brown bridle leather cattle halter with polished solid brass hardware and brass lead chain laid on rustic timber wood table, artisan equestrian leather craftsmanship 4:3',
   },
   {
@@ -893,7 +893,7 @@ export const PRODUCTS: AnimalProduct[] = [
     compatibility: 'All Highland ages — from weaners to mature bulls',
     shortDescription: 'Stainless steel shedding scotch combs, natural boar-bristle brush, detangling rakes, and cedar storage case.',
     fullDescription: 'Proper coat maintenance prevents burrs and matted underwool. This master collection includes a round-tooth stainless steel scotch comb, reversible curry comb, stiff natural boar-bristle dandy brush, soft face brush, ergonomic undercoat shedding rake, hoof rasp, and organic tea-tree coat sheen spray in a handcrafted aromatic cedar timber chest.',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/highland-royal-grooming-scotch-comb-master-kit.webp',
     imageSourcingPrompt: 'Professional cattle grooming tool kit in open rustic wooden chest, stainless steel scotch combs, natural bristle brushes, coat conditioning oils, high-end livestock grooming tools 4:3',
   },
   {
@@ -917,7 +917,7 @@ export const PRODUCTS: AnimalProduct[] = [
     compatibility: 'Mounts to round timber strainers or steel fence posts',
     shortDescription: 'Heavy-duty dual rotating scratch station. Relieves fly stress and protects paddock fence posts.',
     fullDescription: 'Highland cattle instinctually seek abrasive surfaces to shed their dense winter wool. Without a dedicated brush station, cows will break timber fence rails and rubbing posts. This station-grade unit features heavy-gauge galvanized steel arms with high-density poly bristles and heavy compression springs that allow cows of all heights to safely scratch head, flanks, and rump.',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/automated-heavy-duty-livestock-scratch-brush-station.webp',
     imageSourcingPrompt: 'Automated livestock cattle scratching brush station installed on timber post in sunny green pasture paddock, heavy duty industrial poly bristles, farm paddock equipment 4:3',
   },
   {
@@ -941,7 +941,7 @@ export const PRODUCTS: AnimalProduct[] = [
     compatibility: 'Standard 1/2" or 3/4" Rural Water Line / Gravity or Pressure',
     shortDescription: 'Double-walled insulated stainless drinking trough with brass rapid-fill float. Stays cool in 40°C heat.',
     fullDescription: 'Highland cattle drink up to 40 litres of water daily and refuse warm, stagnant, or algae-ridden water. This commercial 304 food-grade stainless steel trough features polyurethane thermal insulation between double walls, keeping drinking water refreshingly cool even during intense Australian summer heat. Includes an enclosed brass float valve protected from curious horns.',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/thermal-insulated-stainless-steel-water-trough.webp',
     imageSourcingPrompt: 'Heavy duty 304 stainless steel automatic livestock drinking water trough with clean bubbling water in lush green pasture paddock, professional cattle farm infrastructure 4:3',
   },
   {
@@ -965,7 +965,7 @@ export const PRODUCTS: AnimalProduct[] = [
     compatibility: 'Engineered horn-safe spacing for miniature cattle',
     shortDescription: 'Cradle feeder with 2-inch slow-feed steel mesh and rain roof. Reduces hay wastage by up to 45%.',
     fullDescription: 'Highland cattle are notorious for pulling expensive hay onto the dirt and trampling it. This heavy-duty round-bale cradle elevates the bale 30cm off damp ground and utilizes a contoured slow-feed grid that prevents cattle gorging while eliminating waste. The UV-treated polyethylene roof keeps premium hay dry and mold-free during rain.',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/anti-waste-slow-feeder-round-bale-cradle.webp',
     imageSourcingPrompt: 'Covered round bale hay feeder cradle with steel slow feed grid in pasture paddock, miniature cattle farm equipment, clean green lawn background 4:3',
   },
   {
@@ -989,7 +989,7 @@ export const PRODUCTS: AnimalProduct[] = [
     compatibility: 'Sizes 3\'6" to 4\'9" (Micro to Miniature cattle)',
     shortDescription: '1200D waterproof breathable turnout rug with sheepskin wither fleece and twin surcingles.',
     fullDescription: 'Ideal for sick, recovering, or show cattle requiring pristine coat preservation. Fabricated with heavy-duty 1200 Denier ripstop waterproof fabric, 200g thermal polyfill, natural sheepskin wither protector, and deep shoulder gussets contoured to allow natural grazing posture without rubbing off mane hair.',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/highland-all-weather-ripstop-paddock-blanket-rug.webp',
     imageSourcingPrompt: 'Heavy duty dark forest green waterproof canvas cattle blanket rug with sheepskin wither fleece and brass buckles folded over rustic timber rail fence 4:3',
   },
   {
@@ -1013,7 +1013,7 @@ export const PRODUCTS: AnimalProduct[] = [
     compatibility: 'Safe daily forage for all mini highland calves and cows',
     shortDescription: 'Chemical-free weed-tested green Lucerne and low-sugar leafy Teff hay. Essential rumen nutrition.',
     fullDescription: 'Grown in the fertile Lockyer Valley and Darling Downs under precision irrigation. This half-tonne pallet contains 12 bales of leafy high-protein Prime Lucerne (Alfalfa) and 12 bales of low-sugar, high-digestibility Teff grass hay. Tested free of invasive weed seeds, endophytes, and mold. Palletized and shrink-wrapped for clean delivery direct to your property.',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/certified-prime-lucerne-teff-hay-pallet.webp',
     imageSourcingPrompt: 'Stack of fragrant premium green Lucerne alfalfa and soft leafy teff hay bales neatly wrapped on wooden pallet in clean barn, golden farm sunlight 4:3',
   },
   {
@@ -1037,7 +1037,7 @@ export const PRODUCTS: AnimalProduct[] = [
     compatibility: 'Daily training treat and show conditioning ration',
     shortDescription: 'Micronized steam-flaked barley, lupins, cold-pressed flaxseed oil, and chelated minerals for show-ring coat shine.',
     fullDescription: 'Formulated exclusively by Australian livestock nutritionists to produce the iconic glossy double coat of Highland cattle. Contains micronized steam-flaked grains for maximum starch digestibility, cold-pressed flaxseed oil (rich in Omega 3 & 6), organic kelp meal, chelated zinc, and biotin to promote dense horn growth and thick, shiny wool.',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/highland-stud-royal-conditioning-sweet-muesli.webp',
     imageSourcingPrompt: 'Close up of luxury textured sweet feed muesli for cattle with steam flaked barley, molasses, lupins, sunflower seeds and minerals in rustic wooden scoop 4:3',
   },
   {
@@ -1061,7 +1061,7 @@ export const PRODUCTS: AnimalProduct[] = [
     compatibility: 'Continuous free-choice paddock access for cattle of all ages',
     shortDescription: 'Fortified molasses, kelp, magnesium, copper, and selenium lick tubs. Weatherproof formulation.',
     fullDescription: 'Australian soils are notoriously deficient in selenium, copper, and cobalt—critical trace elements required for Highland coat pigmentation, strong immune response, and hoof hardness. These low-intake molasses lick tubs withstand rain without dissolving, allowing cattle to self-regulate their micronutrient intake naturally year-round.',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/organic-atlantic-sea-kelp-mineral-lick-tubs.webp',
     imageSourcingPrompt: 'Heavy duty livestock molasses and organic seaweed mineral lick block tub placed in lush green grass paddock pasture, natural cattle supplement block 4:3',
   },
 ];
@@ -1301,7 +1301,7 @@ export const BLOG_POSTS = [
     date: 'March 2025',
     datePublished: '2025-03-04',
     readTime: '6 min read',
-    image: '/images/paddock-companion-steers.webp',
+    image: '/images/angus-tiger-brindle-micro-pet-steer.webp',
   },
   {
     slug: 'miniature-highland-grooming-blowers-and-coat-care-guide',
@@ -1311,7 +1311,7 @@ export const BLOG_POSTS = [
     date: 'March 2025',
     datePublished: '2025-03-12',
     readTime: '7 min read',
-    image: '/images/grooming-blower-pro-care.webp',
+    image: '/images/royal-highland-master-show-blower-dryer.webp',
   },
   {
     slug: 'starting-a-miniature-highland-fold-foundation-pairs',
@@ -1321,7 +1321,7 @@ export const BLOG_POSTS = [
     date: 'March 2025',
     datePublished: '2025-03-20',
     readTime: '9 min read',
-    image: '/images/hamish-and-hazel-foundation-pair.webp',
+    image: '/images/rory-and-fern-silver-foundation-breeding-pair.webp',
   },
 ];
 
