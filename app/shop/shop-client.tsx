@@ -128,7 +128,7 @@ function ShopContent({ category, sub, brand, q }: ShopFilters) {
     });
   }, [categoryFilter, subcategoryFilter, brandFilter, sizeFilter, colorFilter, chondroFilter, sortBy, searchTerm]);
 
-  const colorOptions = ['Silver', 'White', 'Dun', 'Red', 'Black', 'Brindle', 'Yellow'];
+  const colorOptions = ['Silver', 'White', 'Dun', 'Red', 'Black', 'Brindle', 'Yellow', 'Brown'];
 
   const resetAllFilters = () => {
     setCategoryFilter('all');

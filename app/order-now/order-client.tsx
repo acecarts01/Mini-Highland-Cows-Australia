@@ -34,11 +34,15 @@ import {
 
 function OrderNowContent() {
   const searchParams = useSearchParams();
-  const animalSlugParam = searchParams.get('animal') || searchParams.get('slug');
+  // Every "Order Now" link site-wide (AnimalCard, AnimalModal) passes the
+  // animal's id, e.g. /order-now?animal=mhc-70 — not its slug. This lookup
+  // must check both, or every one of those links silently falls through to
+  // the mhc-01 default regardless of which product was actually clicked.
+  const animalParam = searchParams.get('animal') || searchParams.get('slug');
 
-  // Find animal or default to Isla (mhc-01)
   const initialAnimal =
-    ALL_PRODUCTS.find((p) => p.slug === animalSlugParam) ||
+    ALL_PRODUCTS.find((p) => p.id === animalParam) ||
+    ALL_PRODUCTS.find((p) => p.slug === animalParam) ||
     ALL_PRODUCTS.find((p) => p.id === 'mhc-01') ||
     ALL_PRODUCTS[0];
 

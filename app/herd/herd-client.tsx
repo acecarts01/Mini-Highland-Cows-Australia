@@ -57,7 +57,7 @@ export default function HerdClient() {
     });
   }, [categoryFilter, subcategoryFilter, sizeFilter, colorFilter, chondroFilter, sortBy, searchTerm]);
 
-  const colorOptions = ['Silver', 'White', 'Dun', 'Red', 'Black', 'Brindle', 'Yellow'];
+  const colorOptions = ['Silver', 'White', 'Dun', 'Red', 'Black', 'Brindle', 'Yellow', 'Brown'];
 
   return (
     <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
