@@ -16,5 +16,5 @@ export default async function PayPage({ searchParams }: { searchParams: Promise<
   const { i } = await searchParams;
   const order = verifyOrder(i);
   const valid = order && order.invoice;
-  return <PayInvoice order={valid ? order : null} />;
+  return <PayInvoice order={valid ? order : null} token={valid ? i! : ''} />;
 }

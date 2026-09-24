@@ -43,9 +43,21 @@ const fadeUp = {
   animate: { opacity: 1, y: 0 },
 };
 
-export default function PayInvoice({ order }: { order: Order | null }) {
+export default function PayInvoice({ order, token }: { order: Order | null; token: string }) {
   const [qr, setQr] = useState('');
+  const [notified, setNotified] = useState<'whatsapp' | 'email' | null>(null);
   const inv = order?.invoice;
+
+  const notifyReceipt = (method: 'whatsapp' | 'email') => {
+    setNotified(method);
+    fetch('/api/orders/receipt', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token, method }),
+    }).catch(() => {
+      /* the WhatsApp/email send itself already reached the business either way */
+    });
+  };
 
   useEffect(() => {
     if (!order || inv?.method !== 'crypto' || !inv.crypto) return;
@@ -162,6 +174,7 @@ export default function PayInvoice({ order }: { order: Order | null }) {
               href={whatsappReceiptUrl(order)}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => notifyReceipt('whatsapp')}
               className="inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-[#1e7a46] hover:bg-[#25984f] text-white font-bold text-sm transition-colors shadow-md"
             >
               <MessageSquare className="w-4 h-4" /> WhatsApp Receipt
@@ -170,11 +183,21 @@ export default function PayInvoice({ order }: { order: Order | null }) {
               whileTap={{ scale: 0.97 }}
               whileHover={{ y: -2 }}
               href={mailtoReceiptUrl(order)}
+              onClick={() => notifyReceipt('email')}
               className="inline-flex items-center justify-center gap-2 py-3.5 rounded-2xl bg-[#1c3028] hover:bg-[#284439] text-[#e5c07b] font-bold text-sm transition-colors shadow-md"
             >
               <Mail className="w-4 h-4" /> Email Receipt
             </motion.a>
           </div>
+          {notified && (
+            <motion.p
+              initial={{ opacity: 0, y: -4 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex items-center justify-center gap-1.5 text-xs font-semibold text-[#1e7a46] bg-[#e4f4ea] border border-[#7fd0a0] rounded-xl px-3 py-2"
+            >
+              <Check className="w-3.5 h-3.5" /> We&rsquo;ve emailed you a confirmation that your payment notice was received — we&rsquo;ll verify and follow up shortly.
+            </motion.p>
+          )}
           <p className="text-[11px] text-[#a08a63] text-center">Questions? <a href={`mailto:${CONTACT.email}`} className="text-[#8a6a2e] hover:underline font-semibold">{CONTACT.email}</a></p>
         </motion.section>
 

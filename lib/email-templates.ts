@@ -73,9 +73,13 @@ function shell(opts: { preheader: string; title: string; intro: string; fields: 
             <td bgcolor="${BRAND.white}" style="background-color:${BRAND.white}; padding:24px;">
               <h1 style="margin:0 0 12px; font-family:Georgia,'Times New Roman',serif; font-size:19px; color:${BRAND.charcoal};">${escapeHtml(opts.title)}</h1>
               <p style="margin:0 0 18px; font-family:Arial,Helvetica,sans-serif; font-size:13px; line-height:1.6; color:#4b4337;">${opts.intro}</p>
-              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${BRAND.white}" style="background-color:${BRAND.white}; border:1px solid #e5dec9; border-radius:8px; overflow:hidden;">
+              ${
+                opts.fields.length
+                  ? `<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${BRAND.white}" style="background-color:${BRAND.white}; border:1px solid #e5dec9; border-radius:8px; overflow:hidden;">
                 ${fieldRows(opts.fields)}
-              </table>
+              </table>`
+                  : ''
+              }
             </td>
           </tr>
           <tr>
@@ -355,4 +359,24 @@ export function renderInvoiceEmail(order: Order, payUrl: string) {
     `Full invoice: ${payUrl}`,
   ].join('\n');
   return { subject: `Tax invoice ${order.ref} — ${aud(order.totals.total)} — Mini Highland Cows`, html, text };
+}
+
+/**
+ * Sent to the customer the instant they click "WhatsApp Receipt" or "Email
+ * Receipt" on the pay page — an immediate acknowledgement, not a payment
+ * confirmation. Marking the order Paid stays a deliberate admin action once
+ * they've actually checked the receipt; this just tells the customer their
+ * notice was received while they wait.
+ */
+export function paymentReceiptAckEmail(order: Order, method: 'whatsapp' | 'email') {
+  const first = order.customer.name.split(' ')[0];
+  const via = method === 'whatsapp' ? 'WhatsApp' : 'email';
+  const title = `Thanks, ${first} — we've got your payment notice`;
+  const intro = `We've received your note that you've paid for order <strong>${escapeHtml(order.ref)}</strong> (${escapeHtml(order.animal.name)}), sent via ${via}. Our Roma stud desk is verifying it now and will confirm shortly with your dispatch details.`;
+  const footer = 'Mini Highland Cows &bull; MHC PTY LTD &bull; Roma, QLD, Australia &bull; This is an automated acknowledgment — replies to this address are monitored.';
+  return {
+    subject: `We've received your payment notice — order ${order.ref}`,
+    html: shell({ preheader: intro, title, intro, fields: [], footer }),
+    text: plainText(title, intro, [], footer),
+  };
 }

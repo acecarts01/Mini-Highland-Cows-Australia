@@ -134,6 +134,20 @@ export async function setOrderStatus(ref: string, status: OrderStatus, note?: st
   });
 }
 
+/** Logs an activity note without changing the order's status - e.g. "client says they've paid". Marking an order Paid stays a separate, deliberate admin action. */
+export async function logOrderEvent(ref: string, note: string): Promise<void> {
+  try {
+    await withRetry(async () => {
+      await migrate();
+      const { rows } = await sql`SELECT status FROM orders WHERE ref = ${ref}`;
+      const status = rows[0]?.status ?? 'invoice_sent';
+      await sql`INSERT INTO order_events (order_ref, status, note) VALUES (${ref}, ${status}, ${note})`;
+    });
+  } catch (e) {
+    console.error('[db] logOrderEvent failed (non-fatal):', e);
+  }
+}
+
 export async function orderCounts(): Promise<Record<string, number>> {
   return withRetry(async () => {
     await migrate();
