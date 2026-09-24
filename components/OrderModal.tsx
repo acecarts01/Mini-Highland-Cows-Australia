@@ -8,9 +8,9 @@ import {
   CONTACT,
   SITE,
   SHOP,
-  FORMS,
   getAnimalOrderSpecs,
 } from '@/lib/site-config';
+import { submitToReplyPortal } from '@/lib/submit-form';
 import {
   X,
   Truck,
@@ -48,9 +48,12 @@ export default function OrderModal({ animal, isOpen, onClose }: OrderModalProps)
     needPicHelp: false,
     paymentMethod: 'bank-transfer',
     notes: '',
+    website: '', // honeypot — stays blank for real users
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [activeTab, setActiveTab] = useState<'specs' | 'order'>('order');
 
   if (!isOpen || !animal) return null;
@@ -61,38 +64,40 @@ export default function OrderModal({ animal, isOpen, onClose }: OrderModalProps)
 
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    setErrorMessage('');
 
-    // Send via Web3Forms if configured
-    if (FORMS.web3formsKey && !FORMS.web3formsKey.startsWith('YOUR-')) {
-      try {
-        const body = new FormData();
-        body.append('access_key', FORMS.web3formsKey);
-        body.append('subject', `ORDER NOW: Direct Paddock Shipping for ${animal.name} (${animal.id})`);
-        body.append('from_name', formData.fullName || 'MHC Buyer');
-        body.append('animal_id', animal.id);
-        body.append('animal_name', animal.name);
-        body.append('price_aud', animal.price.toString());
-        body.append('phone', formData.phone);
-        body.append('email', formData.email);
-        body.append(
-          'delivery_address',
-          `${formData.deliveryAddress}, ${formData.suburbCity} ${formData.state} ${formData.postcode}`
-        );
-        body.append('pic_number', formData.picNumber || (formData.needPicHelp ? 'Needs Registration Help' : 'Pending'));
-        body.append('payment_preference', formData.paymentMethod);
-        body.append('access_notes', formData.paddockAccessNotes);
+    const result = await submitToReplyPortal({
+      formType: 'order',
+      name: formData.fullName,
+      email: formData.email,
+      website: formData.website,
+      fields: [
+        { label: 'Animal', value: `${animal.name} (${animal.id})` },
+        { label: 'Price', value: `$${animal.price.toLocaleString()} AUD` },
+        { label: 'Full Name', value: formData.fullName },
+        { label: 'Phone', value: formData.phone },
+        { label: 'Email', value: formData.email },
+        {
+          label: 'Delivery Address',
+          value: `${formData.deliveryAddress}, ${formData.suburbCity} ${formData.state} ${formData.postcode}`,
+        },
+        {
+          label: 'PIC Number',
+          value: formData.picNumber || (formData.needPicHelp ? 'Needs registration help' : 'Pending'),
+        },
+        { label: 'Payment Method', value: formData.paymentMethod },
+        { label: 'Paddock Access Notes', value: formData.paddockAccessNotes },
+        { label: 'Additional Notes', value: formData.notes },
+      ],
+    });
 
-        await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body,
-        });
-      } catch (err) {
-        console.error('Web3Forms submit error:', err);
-      }
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setErrorMessage(result.message || 'Could not send your order. Please contact us via WhatsApp or phone instead.');
     }
-
-    setSubmitted(true);
+    setSubmitting(false);
   };
 
   const generateWhatsAppOrderUrl = () => {
@@ -384,6 +389,24 @@ export default function OrderModal({ animal, isOpen, onClose }: OrderModalProps)
             ) : (
               /* ORDER FORM TAB */
               <form onSubmit={handleFormSubmit} className="space-y-6">
+                {/* Honeypot: real visitors never see or fill this in. */}
+                <input
+                  type="text"
+                  name="website"
+                  value={formData.website}
+                  onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] w-px h-px opacity-0"
+                />
+
+                {errorMessage && (
+                  <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium">
+                    {errorMessage}
+                  </div>
+                )}
+
                 {/* Animal Summary Row */}
                 <div className="p-4 rounded-2xl bg-[#fbf9f5] border border-[#ebdcb9] flex flex-col sm:flex-row items-center justify-between gap-4">
                   <div className="flex items-center gap-3">
@@ -697,10 +720,11 @@ export default function OrderModal({ animal, isOpen, onClose }: OrderModalProps)
                 <div className="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center gap-3">
                   <button
                     type="submit"
-                    className="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-[#1c3028] hover:bg-[#284439] text-[#e5c07b] font-bold text-sm transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
+                    disabled={submitting}
+                    className="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-[#1c3028] hover:bg-[#284439] disabled:opacity-60 disabled:cursor-not-allowed text-[#e5c07b] font-bold text-sm transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
                   >
                     <Truck className="w-4 h-4 text-[#e5c07b]" />
-                    Confirm Order for Direct Shipping
+                    {submitting ? 'Sending…' : 'Confirm Order for Direct Shipping'}
                   </button>
 
                   <a

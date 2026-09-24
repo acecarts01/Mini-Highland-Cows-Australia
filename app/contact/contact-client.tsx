@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import { SITE, CONTACT, FORMS } from '@/lib/site-config';
+import { SITE, CONTACT } from '@/lib/site-config';
+import { submitToReplyPortal } from '@/lib/submit-form';
 import {
   MapPin,
   Phone,
@@ -30,6 +31,7 @@ export default function ContactClient() {
     cattleInterest: '',
     paymentPreference: 'Crypto (BTC / USDT - 10% Off)',
     message: '',
+    website: '', // honeypot — stays blank for real users
   });
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -37,35 +39,28 @@ export default function ContactClient() {
     setSubmitting(true);
     setErrorMessage('');
 
-    const form = e.currentTarget;
-    const accessKey = FORMS.web3formsKey;
+    const result = await submitToReplyPortal({
+      formType: 'contact',
+      name: formData.name,
+      email: formData.email,
+      website: formData.website,
+      fields: [
+        { label: 'Name', value: formData.name },
+        { label: 'Email', value: formData.email },
+        { label: 'Phone', value: formData.phone },
+        { label: 'PIC Number', value: formData.pic },
+        { label: 'Cattle of Interest', value: formData.cattleInterest },
+        { label: 'Payment Preference', value: formData.paymentPreference },
+        { label: 'Message', value: formData.message },
+      ],
+    });
 
-    // Key-pending fallback
-    if (!accessKey || accessKey.startsWith('YOUR-') || accessKey === 'PENDING') {
-      setTimeout(() => {
-        setSubmitting(false);
-        setSubmitted(true);
-      }, 600);
-      return;
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setErrorMessage(result.message || 'Could not send enquiry. Please contact us via WhatsApp.');
     }
-
-    try {
-      const res = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: { Accept: 'application/json' },
-        body: new FormData(form),
-      });
-      const data = await res.json();
-      if (res.ok && data.success) {
-        setSubmitted(true);
-      } else {
-        throw new Error(data.message || 'Submission failed');
-      }
-    } catch (err: any) {
-      setErrorMessage(err.message || 'Could not send enquiry. Please contact us via WhatsApp.');
-    } finally {
-      setSubmitting(false);
-    }
+    setSubmitting(false);
   };
 
   return (
@@ -202,10 +197,17 @@ export default function ContactClient() {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* Web3Forms required hidden inputs */}
-              <input type="hidden" name="access_key" value={FORMS.web3formsKey} />
-              <input type="hidden" name="subject" value="New Live Cattle Reservation Enquiry - MHC PTY LTD" />
-              <input type="hidden" name="from_name" value="MHC Website Reservation" />
-              <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+              {/* Honeypot: real visitors never see or fill this in (aria-hidden + off-screen, not display:none, which some bots skip). */}
+              <input
+                type="text"
+                name="website"
+                value={formData.website}
+                onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute -left-[9999px] w-px h-px opacity-0"
+              />
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>

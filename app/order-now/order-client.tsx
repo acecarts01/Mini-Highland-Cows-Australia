@@ -11,9 +11,9 @@ import {
   CONTACT,
   SITE,
   SHOP,
-  FORMS,
   getAnimalOrderSpecs,
 } from '@/lib/site-config';
+import { submitToReplyPortal } from '@/lib/submit-form';
 import {
   Truck,
   ShieldCheck,
@@ -59,9 +59,12 @@ function OrderNowContent() {
     needPicHelp: false,
     paymentMethod: 'bank-transfer',
     notes: '',
+    website: '', // honeypot — stays blank for real users
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   const filteredAnimals = ALL_PRODUCTS.filter((a) => {
@@ -82,37 +85,40 @@ function OrderNowContent() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitting(true);
+    setErrorMessage('');
 
-    if (FORMS.web3formsKey && !FORMS.web3formsKey.startsWith('YOUR-')) {
-      try {
-        const body = new FormData();
-        body.append('access_key', FORMS.web3formsKey);
-        body.append('subject', `NEW DIRECT LIVESTOCK ORDER: ${selectedAnimal.name} (${selectedAnimal.id})`);
-        body.append('from_name', formData.fullName || 'MHC Buyer');
-        body.append('animal_id', selectedAnimal.id);
-        body.append('animal_name', selectedAnimal.name);
-        body.append('price_aud', selectedAnimal.price.toString());
-        body.append('phone', formData.phone);
-        body.append('email', formData.email);
-        body.append(
-          'delivery_address',
-          `${formData.deliveryAddress}, ${formData.suburbCity} ${formData.state} ${formData.postcode}`
-        );
-        body.append('pic_number', formData.picNumber || (formData.needPicHelp ? 'Assistance Needed' : 'Pending'));
-        body.append('payment_method', formData.paymentMethod);
-        body.append('access_notes', formData.paddockAccessNotes);
+    const result = await submitToReplyPortal({
+      formType: 'order',
+      name: formData.fullName,
+      email: formData.email,
+      website: formData.website,
+      fields: [
+        { label: 'Animal', value: `${selectedAnimal.name} (${selectedAnimal.id})` },
+        { label: 'Price', value: `$${selectedAnimal.price.toLocaleString()} AUD` },
+        { label: 'Full Name', value: formData.fullName },
+        { label: 'Phone', value: formData.phone },
+        { label: 'Email', value: formData.email },
+        {
+          label: 'Delivery Address',
+          value: `${formData.deliveryAddress}, ${formData.suburbCity} ${formData.state} ${formData.postcode}`,
+        },
+        {
+          label: 'PIC Number',
+          value: formData.picNumber || (formData.needPicHelp ? 'Assistance needed' : 'Pending'),
+        },
+        { label: 'Payment Method', value: formData.paymentMethod },
+        { label: 'Paddock Access Notes', value: formData.paddockAccessNotes },
+        { label: 'Additional Notes', value: formData.notes },
+      ],
+    });
 
-        await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: { Accept: 'application/json' },
-          body,
-        });
-      } catch (err) {
-        console.error('Order submit error:', err);
-      }
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setErrorMessage(result.message || 'Could not send your order. Please contact us via WhatsApp or phone instead.');
     }
-
-    setSubmitted(true);
+    setSubmitting(false);
   };
 
   const generateWhatsAppUrl = () => {
@@ -490,6 +496,24 @@ function OrderNowContent() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
+                  {/* Honeypot: real visitors never see or fill this in. */}
+                  <input
+                    type="text"
+                    name="website"
+                    value={formData.website}
+                    onChange={(e) => setFormData({ ...formData, website: e.target.value })}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="absolute -left-[9999px] w-px h-px opacity-0"
+                  />
+
+                  {errorMessage && (
+                    <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium">
+                      {errorMessage}
+                    </div>
+                  )}
+
                   {/* Buyer Contact Details */}
                   <div className="space-y-3">
                     <h5 className="text-xs font-bold uppercase tracking-wider text-gray-500">
@@ -740,10 +764,11 @@ function OrderNowContent() {
                   <div className="pt-4 border-t border-gray-200 flex flex-col sm:flex-row items-center gap-3">
                     <button
                       type="submit"
-                      className="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-[#1c3028] hover:bg-[#284439] text-[#e5c07b] font-bold text-sm transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
+                      disabled={submitting}
+                      className="w-full sm:flex-1 py-3.5 px-6 rounded-2xl bg-[#1c3028] hover:bg-[#284439] disabled:opacity-60 disabled:cursor-not-allowed text-[#e5c07b] font-bold text-sm transition-all shadow-md active:scale-95 flex items-center justify-center gap-2"
                     >
                       <Truck className="w-4 h-4 text-[#e5c07b]" />
-                      Place Order for Direct Paddock Delivery
+                      {submitting ? 'Sending…' : 'Place Order for Direct Paddock Delivery'}
                     </button>
 
                     <a

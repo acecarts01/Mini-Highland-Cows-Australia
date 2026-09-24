@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { AnimalProduct, CONTACT, SHOP, SITE } from '@/lib/site-config';
 import { X, Trash2, MessageCircle, ShieldCheck, ArrowRight, Sparkles, CheckCircle2, Truck } from 'lucide-react';
+import { submitToReplyPortal } from '@/lib/submit-form';
 
 interface EnquiryDrawerProps {
   isOpen: boolean;
@@ -26,7 +27,10 @@ export default function EnquiryDrawer({
   const [picNumber, setPicNumber] = useState('');
   const [postcode, setPostcode] = useState('');
   const [notes, setNotes] = useState('');
+  const [website, setWebsite] = useState(''); // honeypot — stays blank for real users
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   if (!isOpen) return null;
 
@@ -49,9 +53,39 @@ export default function EnquiryDrawer({
     return `https://wa.me/${CONTACT.whatsapp.replace('+', '')}?text=Hello%20MHC%20PTY%20LTD!%20I%20would%20like%20to%20reserve%20the%20following%20live%20miniature%20Highland%20cattle:%0A${animalLines}${pricingSummary}${customerInfo}`;
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    setSubmitting(true);
+    setErrorMessage('');
+
+    const animalLines = enquiredAnimals
+      .map((a) => `${a.name} (${a.color} ${a.sizeClass} Highland ${a.sex}, $${a.price.toLocaleString()} AUD)`)
+      .join('; ');
+
+    const result = await submitToReplyPortal({
+      formType: 'enquiry',
+      name,
+      email,
+      website,
+      fields: [
+        { label: 'Animals Enquired', value: animalLines },
+        { label: 'Total (AUD)', value: `$${totalPrice.toLocaleString()}` },
+        { label: '20% Holding Deposit', value: `$${holdingDepositTotal.toLocaleString()}` },
+        { label: 'Name', value: name },
+        { label: 'Phone', value: phone },
+        { label: 'Email', value: email },
+        { label: 'PIC Number', value: picNumber },
+        { label: 'Postcode / State', value: postcode },
+        { label: 'Notes', value: notes },
+      ],
+    });
+
+    if (result.success) {
+      setSubmitted(true);
+    } else {
+      setErrorMessage(result.message || 'Could not send your enquiry. Please contact us via WhatsApp instead.');
+    }
+    setSubmitting(false);
   };
 
   return (
@@ -220,6 +254,23 @@ export default function EnquiryDrawer({
 
               {/* Buyer Contact Details Form */}
               <form onSubmit={handleFormSubmit} className="space-y-3 pt-2">
+                {/* Honeypot: real visitors never see or fill this in. */}
+                <input
+                  type="text"
+                  value={website}
+                  onChange={(e) => setWebsite(e.target.value)}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="absolute -left-[9999px] w-px h-px opacity-0"
+                />
+
+                {errorMessage && (
+                  <div className="p-3 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs font-medium">
+                    {errorMessage}
+                  </div>
+                )}
+
                 <h4 className="font-bold text-xs uppercase tracking-wider text-[#40382d]">
                   Buyer Property & Contact
                 </h4>
@@ -277,9 +328,10 @@ export default function EnquiryDrawer({
                 {/* Submit button */}
                 <button
                   type="submit"
-                  className="w-full py-3 bg-[#1c3028] hover:bg-[#284439] text-[#f4efe6] rounded-xl text-xs font-bold transition-colors flex items-center justify-center gap-2 shadow-xs"
+                  disabled={submitting}
+                  className="w-full py-3 bg-[#1c3028] hover:bg-[#284439] disabled:opacity-60 disabled:cursor-not-allowed text-[#f4efe6] rounded-xl text-xs font-bold transition-colors flex items-center justify-center gap-2 shadow-xs"
                 >
-                  <span>Submit Livestock Reservation Request</span>
+                  <span>{submitting ? 'Sending…' : 'Submit Livestock Reservation Request'}</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </form>

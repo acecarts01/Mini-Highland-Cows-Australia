@@ -61,21 +61,18 @@ export const SITE = {
   secondaryColor: '#232320',
   freeShippingThreshold: 2000,
   cryptoDiscountPct: 10,
-  domain: 'DOMAIN.com',
+  domain: 'minihighlandcow.com.au',
   picNlisText: 'All livestock sales require valid buyer PIC (Property Identification Code) and include NLIS electronic RFID transfer as mandated by Biosecurity Australia & MLA.',
 };
 
+// TODO: phone / whatsapp are still placeholders — a real Australian number
+// is needed before launch. Do not invent one; get it from the business owner.
 export const CONTACT = {
-  email: 'hello@thehighlandfold.com.au',
+  email: 'info@minihighlandcow.com.au',
   phone: '+61 400 000 000',
   whatsapp: '+61400000000',
   location: 'Roma, Queensland 4455, Australia',
   operatingHours: 'Mon - Sat: 8:00am - 6:00pm AEST',
-};
-
-export const FORMS = {
-  provider: 'web3forms',
-  web3formsKey: 'PENDING',
 };
 
 export const CATEGORIES = [
