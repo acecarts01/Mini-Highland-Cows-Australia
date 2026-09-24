@@ -1808,6 +1808,206 @@ export const BLOG_POSTS = [
     readTime: '9 min read',
     image: '/images/rory-and-fern-silver-foundation-breeding-pair.webp',
   },
+  {
+    slug: 'buying-a-mini-highland-cow-in-australia-buyer-checklist',
+    title: 'Mini Highland Cow for Sale: The Complete Australian Buyer\'s Checklist',
+    excerpt:
+      'Everything to check before you buy a mini Highland cow for sale in Australia — paperwork, PIC registration, companionship, and delivery, in the right order.',
+    date: 'April 2025',
+    datePublished: '2025-04-03',
+    readTime: '7 min read',
+    image: '/images/isla-silver-micro-heifer.webp',
+  },
+  {
+    slug: 'mini-highland-cow-price-guide-what-affects-cost',
+    title: 'Highland Cow Price Guide: What Actually Affects the Cost',
+    excerpt:
+      'Height class, coat colour, registration, and training all move highland cow price up or down — here is exactly what drives the number on any listing.',
+    date: 'April 2025',
+    datePublished: '2025-04-14',
+    readTime: '6 min read',
+    image: '/images/bonnie-platinum-silver-miniature-heifer.webp',
+  },
+  {
+    slug: 'mini-highland-cows-for-sale-australia-wide-shipping-guide',
+    title: 'Mini Highland Cows for Sale Australia-Wide: The Shipping Guide',
+    excerpt:
+      'How door-to-paddock delivery actually works for mini Highland cows for sale Australia wide — NSW, VIC, QLD, SA, WA and TAS, explained state by state.',
+    date: 'April 2025',
+    datePublished: '2025-04-25',
+    readTime: '7 min read',
+    image: '/images/ember-red-miniature-heifer.webp',
+  },
+  {
+    slug: 'how-big-do-mini-highland-cows-get-size-weight-chart',
+    title: 'How Big Do Mini Highland Cows Get? Real Size & Weight Numbers',
+    excerpt:
+      'Real hip-height and live-weight figures for micro and miniature Highland cattle at maturity — how big do mini Highland cows get, answered with numbers.',
+    date: 'May 2025',
+    datePublished: '2025-05-06',
+    readTime: '6 min read',
+    image: '/images/gemma-silver-dun-micro-heifer.webp',
+  },
+  {
+    slug: 'dehorning-vs-polled-genetics-highland-cattle-buyers-guide',
+    title: 'Dehorning vs Polled Genetics: A Highland Cattle Buyer\'s Guide',
+    excerpt:
+      'Considering dehorning cattle or looking for naturally polled genetics instead? A plain-English guide to your real options before you buy.',
+    date: 'May 2025',
+    datePublished: '2025-05-17',
+    readTime: '6 min read',
+    image: '/images/clyde-classic-scottish-red-miniature-steer.webp',
+  },
+  {
+    slug: 'dwarfism-in-cattle-what-chondro-really-means',
+    title: 'Dwarfism in Cattle: What "Chondro" Really Means',
+    excerpt:
+      'Chondrodysplasia explained plainly — what a dwarf cow carrier actually is, why the breeding rule around it exists, and why it is not a health concern on its own.',
+    date: 'May 2025',
+    datePublished: '2025-05-28',
+    readTime: '7 min read',
+    image: '/images/kirsty-silver-brindle-micro-heifer.webp',
+  },
+  {
+    slug: 'fluffy-cows-explained-highland-coat-guide',
+    title: 'Fluffy Cows Explained: The Science Behind the Shaggiest Coat in Cattle',
+    excerpt:
+      'Why Highland cattle grow the fluffiest, most photogenic coat of any cattle breed — and how a mini fluffy cow carries the exact same genetics on a smaller frame.',
+    date: 'June 2025',
+    datePublished: '2025-06-05',
+    readTime: '6 min read',
+    image: '/images/blanche-chalk-white-micro-heifer.webp',
+  },
+  {
+    slug: 'do-mini-highland-cows-make-good-pets',
+    title: 'Do Mini Highland Cows Make Good Pets? An Honest Owner\'s Guide',
+    excerpt:
+      'Do mini Highland cows make good pets? A realistic look at daily care, companionship needs, and family life with a paddock pet Highland — not just the cute factor.',
+    date: 'June 2025',
+    datePublished: '2025-06-16',
+    readTime: '7 min read',
+    image: '/images/fergus-jet-black-miniature-pet-steer.webp',
+  },
+  {
+    slug: 'how-much-land-do-you-need-for-mini-highland-cows',
+    title: 'How Much Land Do You Need for Two Mini Highland Cows?',
+    excerpt:
+      'How much land do you need for two mini Highland cows? A realistic acreage, fencing, and paddock guide — from a single steer to a small breeding pair.',
+    date: 'June 2025',
+    datePublished: '2025-06-27',
+    readTime: '6 min read',
+    image: '/images/anti-waste-slow-feeder-round-bale-cradle.webp',
+  },
+  {
+    slug: 'what-do-mini-highland-cows-eat-nutrition-feeding-guide',
+    title: 'What Do Mini Highland Cows Eat? A Complete Nutrition Guide',
+    excerpt:
+      'What do mini Highland cows eat across an Australian year? Pasture, hay, and mineral supplements explained, season by season.',
+    date: 'July 2025',
+    datePublished: '2025-07-08',
+    readTime: '7 min read',
+    image: '/images/highland-stud-royal-conditioning-sweet-muesli.webp',
+  },
+  {
+    slug: 'highland-vs-galloway-miniature-cattle-breed-comparison',
+    title: 'Highland vs Galloway: Which Miniature Cattle Breed Is Right for You?',
+    excerpt:
+      'Coat, horns, and temperament compared honestly — Highland vs Galloway miniature cattle, and which one actually suits your property.',
+    date: 'July 2025',
+    datePublished: '2025-07-19',
+    readTime: '6 min read',
+    image: '/images/cora-dark-brown-micro-heifer.webp',
+  },
+  {
+    slug: 'complete-guide-to-miniature-cattle-breeds-australia',
+    title: 'The Complete Guide to Miniature Cattle Breeds in Australia',
+    excerpt:
+      'Beyond Highland: a straightforward look at the miniature cattle breeds Australian hobby farmers actually keep, and how to choose between them.',
+    date: 'July 2025',
+    datePublished: '2025-07-30',
+    readTime: '7 min read',
+    image: '/images/morag-dark-brown-miniature-heifer.webp',
+  },
+  {
+    slug: 'highland-cattle-colour-genetics-guide',
+    title: 'Highland Cattle Colour Genetics: Silver, Red, Dun, White & Black',
+    excerpt:
+      'What determines a Highland\'s coat colour, and why silver and white command a real premium over the classic red — highland cattle colour genetics explained.',
+    date: 'August 2025',
+    datePublished: '2025-08-11',
+    readTime: '6 min read',
+    image: '/images/finley-platinum-silver-micro-steer.webp',
+  },
+  {
+    slug: 'highland-heifers-101-buying-your-first-female',
+    title: 'Highland Heifers 101: What to Know Before Buying Your First Female',
+    excerpt:
+      'Heifer vs steer, breeding readiness, and what paperwork to check — everything a first-time buyer needs to know about a Highland heifer.',
+    date: 'August 2025',
+    datePublished: '2025-08-22',
+    readTime: '7 min read',
+    image: '/images/astrid-yellow-miniature-heifer.webp',
+  },
+  {
+    slug: 'transporting-highland-cattle-safely-nvd-biosecurity-delivery',
+    title: 'Transporting Highland Cattle Safely: NVD, Biosecurity & Delivery Explained',
+    excerpt:
+      'What actually happens between "sold" and "in your paddock" — livestock transport biosecurity, NVDs, and NLIS transfer, explained step by step.',
+    date: 'September 2025',
+    datePublished: '2025-09-02',
+    readTime: '6 min read',
+    image: '/images/callum-and-morag-foundation-pair.webp',
+  },
+  {
+    slug: 'halter-training-your-mini-highland-calf-step-by-step',
+    title: 'Halter Training Your Mini Highland Calf: Step-by-Step',
+    excerpt:
+      'A patient, positive-reinforcement guide to raising halter trained mini Highland calves that lead calmly for life.',
+    date: 'September 2025',
+    datePublished: '2025-09-13',
+    readTime: '6 min read',
+    image: '/images/buttons-snow-white-bottle-baby-heifer-calf.webp',
+  },
+  {
+    slug: 'are-mini-highland-cows-a-good-investment',
+    title: 'Are Mini Highland Cows a Good Investment? Breeding Economics Explained',
+    excerpt:
+      'A grounded look at highland cattle investment — what actually drives breeding cow value, in-calf pricing, and long-term resale value.',
+    date: 'September 2025',
+    datePublished: '2025-09-24',
+    readTime: '7 min read',
+    image: '/images/maisie-scottish-red-proven-cow-in-calf.webp',
+  },
+  {
+    slug: 'ahcs-imcbr-registration-explained-why-papers-matter',
+    title: 'AHCS & IMCBR Registration Explained: Why Papers Matter When Buying',
+    excerpt:
+      'What AHCS registered Highland cattle and IMCBR registration actually verify, and why insisting on papers protects your purchase.',
+    date: 'October 2025',
+    datePublished: '2025-10-05',
+    readTime: '6 min read',
+    image: '/images/hamish-and-hazel-foundation-pair.webp',
+  },
+  {
+    slug: 'can-you-visit-our-highland-cattle-biosecurity-policy-explained',
+    title: 'Can You Visit Our Highland Cattle? Our Biosecurity Policy Explained',
+    excerpt:
+      'Why MHC doesn\'t offer a highland cow experience or on-farm visits, what closed-gate biosecurity actually protects, and what we offer instead.',
+    date: 'October 2025',
+    datePublished: '2025-10-16',
+    readTime: '6 min read',
+    image: '/images/lachlan-and-morven-snow-white-premier-stud-pair.webp',
+  },
+  {
+    slug: 'steer-vs-bull-vs-heifer-cattle-terminology-explained',
+    title: 'Steer vs Bull vs Heifer: Cattle Terminology Explained',
+    excerpt:
+      'Steer vs bull vs heifer, in plain English — the basic cattle vocabulary every new buyer needs before reading a single listing.',
+    date: 'October 2025',
+    datePublished: '2025-10-27',
+    readTime: '5 min read',
+    image: '/images/pip-silver-micro-weaned-steer-calf.webp',
+  },
 ];
 
 // Alias for livestock & products catalog
