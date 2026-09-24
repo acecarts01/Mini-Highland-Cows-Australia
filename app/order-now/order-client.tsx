@@ -13,7 +13,6 @@ import {
   SHOP,
   getAnimalOrderSpecs,
 } from '@/lib/site-config';
-import { submitToReplyPortal } from '@/lib/submit-form';
 import {
   Truck,
   ShieldCheck,
@@ -92,35 +91,40 @@ function OrderNowContent() {
     setSubmitting(true);
     setErrorMessage('');
 
-    const result = await submitToReplyPortal({
-      formType: 'order',
-      name: formData.fullName,
-      email: formData.email,
-      website: formData.website,
-      fields: [
-        { label: 'Animal', value: `${selectedAnimal.name} (${selectedAnimal.id})` },
-        { label: 'Price', value: `$${selectedAnimal.price.toLocaleString()} AUD` },
-        { label: 'Full Name', value: formData.fullName },
-        { label: 'Phone', value: formData.phone },
-        { label: 'Email', value: formData.email },
-        {
-          label: 'Delivery Address',
-          value: `${formData.deliveryAddress}, ${formData.suburbCity} ${formData.state} ${formData.postcode}`,
-        },
-        {
-          label: 'PIC Number',
-          value: formData.picNumber || (formData.needPicHelp ? 'Assistance needed' : 'Pending'),
-        },
-        { label: 'Payment Method', value: formData.paymentMethod },
-        { label: 'Paddock Access Notes', value: formData.paddockAccessNotes },
-        { label: 'Additional Notes', value: formData.notes },
-      ],
-    });
+    const paymentMap: Record<string, 'bank' | 'crypto' | 'deposit'> = {
+      'bank-transfer': 'bank',
+      crypto: 'crypto',
+      'deposit-hold': 'deposit',
+    };
 
-    if (result.success) {
-      setSubmitted(true);
-    } else {
-      setErrorMessage(result.message || 'Could not send your order. Please contact us via WhatsApp or phone instead.');
+    try {
+      const res = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          website: formData.website,
+          animalId: selectedAnimal.id,
+          payment: paymentMap[formData.paymentMethod] ?? 'bank',
+          name: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.deliveryAddress,
+          suburb: formData.suburbCity,
+          state: formData.state,
+          postcode: formData.postcode,
+          paddockAccessNotes: formData.paddockAccessNotes,
+          picNumber: formData.picNumber,
+          needPicHelp: formData.needPicHelp,
+        }),
+      });
+      const result = await res.json();
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setErrorMessage(result.message || 'Could not send your order. Please contact us via WhatsApp or phone instead.');
+      }
+    } catch {
+      setErrorMessage('Could not send your order. Please contact us via WhatsApp or phone instead.');
     }
     setSubmitting(false);
   };

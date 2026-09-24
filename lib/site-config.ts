@@ -65,6 +65,15 @@ export const SITE = {
   picNlisText: 'All livestock sales require valid buyer PIC (Property Identification Code) and include NLIS electronic RFID transfer as mandated by Biosecurity Australia & MLA.',
 };
 
+// Crypto settlement wallets for the admin settlement terminal and the
+// client pay page. Deliberately empty until the business owner pastes in
+// real, verified addresses — a wrong crypto address sends funds somewhere
+// unrecoverable, so both screens hide the crypto payment option entirely
+// while this list is empty rather than showing a placeholder.
+export const CRYPTO = {
+  wallets: [] as { key: string; asset: string; network: string; address: string }[],
+};
+
 // TODO: phone / whatsapp are still placeholders — a real Australian number
 // is needed before launch. Do not invent one; get it from the business owner.
 export const CONTACT = {

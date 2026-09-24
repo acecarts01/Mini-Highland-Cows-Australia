@@ -62,10 +62,11 @@ interface SendArgs {
   html: string;
   text: string;
   replyTo?: string;
+  bcc?: string;
 }
 
 /** Throws on failure — callers decide how to report that to the client. */
-export async function sendMail({ to, subject, html, text, replyTo }: SendArgs): Promise<void> {
+export async function sendMail({ to, subject, html, text, replyTo, bcc }: SendArgs): Promise<void> {
   const transporter = getTransporter();
   if (!transporter) {
     throw new Error('Mailer not configured: ZOHO_SMTP_USER / ZOHO_SMTP_PASS are not set.');
@@ -74,6 +75,7 @@ export async function sendMail({ to, subject, html, text, replyTo }: SendArgs): 
   await transporter.sendMail({
     from: `"Mini Highland Cows" <${senderAddress()}>`,
     to,
+    bcc,
     replyTo,
     subject,
     html,
