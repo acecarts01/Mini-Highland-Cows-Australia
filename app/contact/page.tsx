@@ -14,6 +14,7 @@ export const metadata: Metadata = {
     description:
       'Availability, transport quotes, PIC registration assistance and pedigree paperwork.',
     url: '/contact',
+    images: ['/og-default.png'],
   },
 };
 

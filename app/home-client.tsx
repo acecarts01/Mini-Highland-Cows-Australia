@@ -60,6 +60,12 @@ export default function HomeClient() {
     ALL_PRODUCTS.find((p) => p.id === 'mhc-eq-01')!, // Royal Highland Master Pro Show Blower
   ].filter(Boolean);
 
+  // Hero card animal — always the same featured heifer (mhc-01), read from the
+  // real product record rather than a hardcoded filename/name/height, so a
+  // future rename or colour correction can't leave this card pointing at a
+  // deleted image again.
+  const heroAnimal = ALL_PRODUCTS.find((p) => p.id === 'mhc-01')!;
+
   // Filtered animals based on category tab (exactly 8 displayed on homepage)
   const filteredCategoryAnimals = ALL_PRODUCTS.filter((a) => {
     if (homepageCategoryFilter !== 'all' && a.category !== homepageCategoryFilter) return false;
@@ -153,8 +159,8 @@ export default function HomeClient() {
           <div className="lg:col-span-5">
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-4 border-white bg-[#f8f5ee]">
               <Image
-                src="/images/aila-silver-micro-heifer.webp"
-                alt="Aila - Rare Silver Micro Miniature Scottish Highland Heifer standing on Australian pasture"
+                src={heroAnimal.image}
+                alt={`${heroAnimal.name} - Rare ${heroAnimal.color} ${heroAnimal.sizeClass} Miniature Scottish Highland ${heroAnimal.sex} standing on Australian pasture`}
                 fill
                 priority
                 sizes="(max-width: 1024px) 100vw, 40vw"
@@ -165,12 +171,20 @@ export default function HomeClient() {
               <div className="absolute bottom-4 left-4 right-4 text-white">
                 <div className="flex items-center justify-between text-xs font-semibold mb-1">
                   <span className="bg-[#b08d57] text-[#232320] px-2.5 py-0.5 rounded-full font-bold">
-                    Featured Micro Heifer
+                    Featured {heroAnimal.sizeClass} {heroAnimal.subcategoryLabel.replace(/s$/, '')}
                   </span>
-                  <span>Mature Height: 34&quot;</span>
+                  <span>Mature Height: {heroAnimal.heightInches}&quot;</span>
                 </div>
-                <p className="font-serif text-lg font-bold">Aila • Rare Silver Micro Heifer</p>
-                <p className="text-xs text-gray-200">Docile, halter-broken, DNA Non-Chondro tested.</p>
+                <p className="font-serif text-lg font-bold">
+                  {heroAnimal.name} • {heroAnimal.color} {heroAnimal.sizeClass} {heroAnimal.sex}
+                </p>
+                <p className="text-xs text-gray-200">
+                  {heroAnimal.chondroStatus?.includes('Non-Carrier')
+                    ? 'Docile, halter-broken, DNA Non-Chondro tested.'
+                    : heroAnimal.chondroStatus?.includes('Carrier')
+                      ? 'Docile, halter-broken. Chondro+ (carrier) — disclosed, not hidden.'
+                      : 'Docile, halter-broken. Chondro status pending confirmation.'}
+                </p>
               </div>
             </div>
           </div>

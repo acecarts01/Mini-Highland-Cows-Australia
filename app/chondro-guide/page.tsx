@@ -6,7 +6,7 @@ import JsonLd from '@/components/JsonLd';
 import { breadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Chondrodysplasia in Mini Highland Cattle: Carrier vs Non-Carrier Guide',
+  title: 'Chondrodysplasia in Mini Highland Cattle',
   description:
     'What Chondro (chondrodysplasia) means in miniature Highland cattle, how carrier and non-carrier genetics differ, and why every MHC animal is DNA tested and disclosed. Australian buyer guide.',
   keywords: [
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     description:
       'Carrier vs non-carrier explained, and why we DNA test and publish Chondro status for every animal.',
     url: '/chondro-guide',
+    images: ['/og-default.png'],
   },
 };
 

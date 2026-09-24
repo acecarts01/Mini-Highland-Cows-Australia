@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'About Our Roma QLD Miniature Highland Stud & PIC Compliance',
+  title: 'About Our Roma QLD Highland Stud',
   description:
     'MHC PTY LTD (ABN 23 158 390 973) is an ASIC-registered miniature Highland cattle stud in Roma, Queensland. Learn about our closed-herd biosecurity, Chondro testing policy, and Australian PIC/NLIS compliance.',
   alternates: { canonical: '/about' },
@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     description:
       'ASIC-registered miniature and micro Scottish Highland cattle stud in Roma, Queensland. Chondro-tested, halter-trained, PIC/NLIS compliant.',
     url: '/about',
+    images: ['/og-default.png'],
   },
 };
 

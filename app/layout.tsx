@@ -7,8 +7,8 @@ import { SITE_URL, organizationSchema, websiteSchema } from '@/lib/seo';
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Mini Highland Cows for Sale Australia | MHC PTY LTD (ABN 23 158 390 973)',
-    template: '%s | Mini Highland Cows Australia',
+    default: 'Mini Highland Cows for Sale Australia | MHC PTY LTD',
+    template: '%s | Mini Highland Cows',
   },
   description:
     "Australia's premier breeder of miniature and micro Scottish Highland cattle in Roma, QLD. Live registered heifers, steers, and cows in calf with radical Chondro transparency. Strictly miniature & micro cattle—never big cows.",
@@ -35,12 +35,21 @@ export const metadata: Metadata = {
     locale: 'en_AU',
     url: '/',
     siteName: 'Mini Highland Cows (MHC PTY LTD)',
+    images: [
+      {
+        url: '/og-default.png',
+        width: 1200,
+        height: 630,
+        alt: 'Mini Highland Cows — Registered Miniature & Micro Scottish Highland Cattle, Roma QLD',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Mini Highland Cows for Sale | MHC PTY LTD',
     description:
       "Australia's premier breeder of miniature and micro Highland cattle in Roma, QLD.",
+    images: ['/og-default.png'],
   },
 };
 

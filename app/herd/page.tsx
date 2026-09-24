@@ -6,7 +6,7 @@ import { breadcrumbSchema, itemListSchema } from '@/lib/seo';
 import HerdClient from './herd-client';
 
 export const metadata: Metadata = {
-  title: 'Available Herd: Every Mini Highland Cow Currently for Sale',
+  title: 'Available Mini Highland Cows for Sale',
   description:
     'The complete live availability list for our Roma QLD stud — micro and miniature Highland heifers, steers, cows in calf, and foundation pairs, each with height, coat colour, and Chondro status.',
   keywords: [
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
     description:
       'Live availability for micro and miniature Highland heifers, steers, and cows in calf.',
     url: '/herd',
+    images: ['/og-default.png'],
   },
 };
 

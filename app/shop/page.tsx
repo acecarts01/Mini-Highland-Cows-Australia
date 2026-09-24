@@ -6,7 +6,7 @@ import { breadcrumbSchema, itemListSchema } from '@/lib/seo';
 import ShopClient from './shop-client';
 
 export const metadata: Metadata = {
-  title: 'Shop Mini Highland Cows, Steers & Cattle Care Equipment',
+  title: 'Shop Mini Highland Cows & Cattle Gear',
   description:
     'Browse every available micro and miniature Highland cow, steer, cow in calf, and premium cattle care product. Filter by size class, coat colour, Chondro status, and registry.',
   keywords: [
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     description:
       'Filter the full herd by size class, coat colour, Chondro status, and registry.',
     url: '/shop',
+    images: ['/og-default.png'],
   },
 };
 

@@ -6,7 +6,7 @@ import { breadcrumbSchema, itemListSchema } from '@/lib/seo';
 import BreedingFoundationClient from './breeding-client';
 
 export const metadata: Metadata = {
-  title: 'Registered Miniature Highland Heifers & Cows in Calf for Sale',
+  title: 'Registered Mini Highland Heifers & Pairs',
   description:
     'Registered micro and miniature Highland breeding stock in Australia: Chondro-tested heifers, proven cows in calf, and foundation pairs from our Roma QLD stud. AHCS and IMCBR pedigree.',
   keywords: [
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     description:
       'Chondro-tested registered heifers, cows in calf, and foundation pairs from our Roma QLD stud.',
     url: '/breeding-foundation',
+    images: ['/og-default.png'],
   },
 };
 

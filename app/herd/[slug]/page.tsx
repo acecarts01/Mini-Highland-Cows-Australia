@@ -36,19 +36,34 @@ export async function generateMetadata({ params }: AnimalDetailPageProps): Promi
   }
 
   const isLivestock = animal.itemType !== 'equipment' && animal.itemType !== 'feed';
+  // Equipment names are already long and descriptive on their own — adding the
+  // subcategory label on top pushed titles well past search-result truncation.
   const title = isLivestock
     ? `${animal.name} — ${animal.color} ${animal.sizeClass} Highland ${animal.sex} for Sale`
-    : `${animal.name} — ${animal.subcategoryLabel}`;
+    : animal.name;
 
   const canonicalPath = `/herd/${animal.slug}`;
 
+  // animal.shortDescription is written for on-page display and often lands
+  // well under the ~120-155 character range a search snippet actually wants.
+  // Pad it with the animal's own real facts (price, size, location) rather
+  // than inventing new copy — this is usually enough on its own to reach a
+  // full-length snippet without truncating awkwardly mid-sentence.
+  const priceLine = isLivestock
+    ? `$${animal.price.toLocaleString()} AUD. ${animal.color} ${animal.sizeClass} ${animal.sex}.`
+    : `$${animal.price.toLocaleString()} AUD.`;
+  let description = `${animal.shortDescription} ${priceLine} Roma, QLD — Australia-wide delivery.`;
+  if (description.length > 158) {
+    description = description.slice(0, 155).replace(/\s+\S*$/, '') + '…';
+  }
+
   return {
     title,
-    description: animal.shortDescription,
+    description,
     alternates: { canonical: canonicalPath },
     openGraph: {
       title,
-      description: animal.shortDescription,
+      description,
       url: canonicalPath,
       type: 'website',
       images: [{ url: animal.image, alt: `${animal.name}, ${animal.color} miniature Highland ${animal.sex}` }],
@@ -56,7 +71,7 @@ export async function generateMetadata({ params }: AnimalDetailPageProps): Promi
     twitter: {
       card: 'summary_large_image',
       title,
-      description: animal.shortDescription,
+      description,
       images: [animal.image],
     },
   };

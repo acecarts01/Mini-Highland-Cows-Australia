@@ -8,7 +8,7 @@ import JsonLd from '@/components/JsonLd';
 import { absoluteUrl, articleSchema, breadcrumbSchema } from '@/lib/seo';
 
 export const metadata: Metadata = {
-  title: 'Miniature Highland Cattle Guides & Care Blog',
+  title: 'Highland Cattle Guides & Care Blog',
   description:
     'Expert guides on miniature Scottish Highland cattle care, pricing, chondrodysplasia genetics, and Australian PIC/NLIS livestock transfer regulations.',
   alternates: { canonical: '/blog' },
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     description:
       'Care, pricing, genetics, and Australian livestock compliance guides from our Roma QLD stud.',
     url: '/blog',
+    images: ['/og-default.png'],
   },
 };
 

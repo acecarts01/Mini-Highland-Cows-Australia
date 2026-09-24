@@ -6,7 +6,7 @@ import { itemListSchema } from '@/lib/seo';
 import HomeClient from './home-client';
 
 export const metadata: Metadata = {
-  title: 'Mini Highland Cows for Sale Australia | Micro & Miniature Highland Cattle',
+  title: 'Mini Highland Cows for Sale Australia',
   description:
     'Buy registered miniature and micro Scottish Highland cattle in Australia. Chondro-tested heifers, halter-trained pet steers, and cows in calf from our Roma QLD stud. Nationwide delivery, PIC & NLIS handled.',
   keywords: [

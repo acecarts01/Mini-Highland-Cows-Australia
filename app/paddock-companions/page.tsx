@@ -6,7 +6,7 @@ import { breadcrumbSchema, itemListSchema } from '@/lib/seo';
 import PaddockCompanionsClient from './paddock-client';
 
 export const metadata: Metadata = {
-  title: 'Halter-Trained Miniature Highland Steers & Pet Calves for Sale',
+  title: 'Mini Highland Steers & Pet Calves',
   description:
     'Docile desexed miniature Highland steers and hand-reared bottle calves for Australian lifestyle acreage. Halter-trained, vaccinated, and delivered nationwide from Roma QLD.',
   keywords: [
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
     description:
       'Halter-trained desexed steers and hand-reared calves for Australian lifestyle acreage.',
     url: '/paddock-companions',
+    images: ['/og-default.png'],
   },
 };
 

@@ -8,7 +8,7 @@ import { breadcrumbSchema, faqSchema } from '@/lib/seo';
 import FaqAccordion from './faq-accordion';
 
 export const metadata: Metadata = {
-  title: 'Mini Highland Cow FAQ: Acreage, PIC, NLIS & Chondro Testing',
+  title: 'Mini Highland Cow Buyer FAQ',
   description:
     'Answers for Australian buyers: how much acreage a miniature Highland cow needs, how PIC registration and NLIS transfers work, Chondro testing policy, delivery, and payment.',
   alternates: { canonical: '/faq' },
@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     description:
       'Acreage, PIC registration, NLIS transfer, Chondro genetics, delivery and payment questions answered.',
     url: '/faq',
+    images: ['/og-default.png'],
   },
 };
 
