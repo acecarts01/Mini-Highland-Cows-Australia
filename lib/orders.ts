@@ -95,12 +95,15 @@ export function verifyOrder(token: string | null | undefined): Order | null {
 // URLs
 
 export function siteUrl(): string {
-  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '');
   // Preview deployments get a fresh *.vercel.app URL every push; VERCEL_URL is
-  // set automatically by Vercel to that exact deployment's own host, so links
-  // in an email sent from a Preview build always point back at that same
-  // Preview, never at the production domain where this branch isn't live yet.
+  // set automatically by Vercel to that exact deployment's own host. This
+  // must be checked BEFORE NEXT_PUBLIC_SITE_URL, which is set to the
+  // production domain for both Production and Preview (for canonical SEO
+  // tags) — checking it first would send every order/admin/invoice/pay link
+  // in a Preview email to the production domain, which isn't running this
+  // branch's code yet.
   if (process.env.VERCEL_ENV === 'preview' && process.env.VERCEL_URL) return `https://${process.env.VERCEL_URL}`;
+  if (process.env.NEXT_PUBLIC_SITE_URL) return process.env.NEXT_PUBLIC_SITE_URL.replace(/\/$/, '');
   return `https://${SITE.domain}`;
 }
 
