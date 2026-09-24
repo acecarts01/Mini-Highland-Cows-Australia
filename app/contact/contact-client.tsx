@@ -196,7 +196,6 @@ export default function ContactClient() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Web3Forms required hidden inputs */}
               {/* Honeypot: real visitors never see or fill this in (aria-hidden + off-screen, not display:none, which some bots skip). */}
               <input
                 type="text"
