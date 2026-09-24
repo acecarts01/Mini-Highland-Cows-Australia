@@ -38,11 +38,11 @@ export default function OrderStatusActions({ orderRef, status }: { orderRef: str
           {busy === 'paid' ? 'Marking…' : 'Mark paid'}
         </button>
       )}
-      <button type="button" onClick={() => mark('dispatched')} disabled={busy !== null} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-white/20 hover:border-[#b08d57] text-xs font-bold transition-colors disabled:opacity-50 cursor-pointer">
+      <button type="button" onClick={() => mark('dispatched')} disabled={busy !== null} className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-[#e5dec9] hover:border-[#b08d57] text-[#232320] text-xs font-bold transition-colors disabled:opacity-50 cursor-pointer">
         <Truck className="w-3.5 h-3.5" />
         {busy === 'dispatched' ? 'Marking…' : 'Mark dispatched'}
       </button>
-      {error && <span className="text-[11px] text-[#f3c6b0]">{error}</span>}
+      {error && <span className="text-[11px] text-[#a13d2b]">{error}</span>}
     </div>
   );
 }

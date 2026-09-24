@@ -100,3 +100,10 @@ export function whatsappReceiptUrl(order: Order): string {
   const text = `Payment receipt for order ${order.ref} (${order.animal.name}) - receipt/screenshot attached below.`;
   return `https://wa.me/${CONTACT.whatsapp.replace('+', '')}?text=${encodeURIComponent(text)}`;
 }
+
+/** Client's payment-receipt email from the pay page — the other half of the WhatsApp option. */
+export function mailtoReceiptUrl(order: Order): string {
+  const subject = `Payment receipt for order ${order.ref}`;
+  const body = `Hi Mini Highland Cows,\n\nI've paid for order ${order.ref} (${order.animal.name}). Receipt/screenshot attached.\n\nThanks,\n${order.customer.name}`;
+  return `mailto:${CONTACT.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
