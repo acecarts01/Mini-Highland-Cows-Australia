@@ -135,7 +135,7 @@ export default function Navbar({
 
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between min-h-20 py-2">
           {/* Brand Logo & Tagline */}
           <div className="flex items-center gap-3">
             <Link href="/" className="flex items-center gap-3 group">
