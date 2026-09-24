@@ -17,13 +17,17 @@ import {
   ArrowLeft,
   Truck,
   Info,
+  HelpCircle,
+  ChevronRight,
 } from 'lucide-react';
+import type { ProductFaq } from '@/lib/product-faqs';
 
 interface AnimalDetailProps {
   animal: AnimalProduct;
+  faqs?: ProductFaq[];
 }
 
-export default function AnimalDetail({ animal }: AnimalDetailProps) {
+export default function AnimalDetail({ animal, faqs = [] }: AnimalDetailProps) {
   const { enquiryList, toggleEnquiry, setInspectedAnimal } = useEnquiry();
 
   const isEnquired = enquiryList.some((a) => a.id === animal.id);
@@ -259,6 +263,26 @@ export default function AnimalDetail({ animal }: AnimalDetailProps) {
           </div>
         </div>
       </div>
+
+      {faqs.length > 0 && (
+        <div className="space-y-4 pt-2">
+          <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#232320] flex items-center gap-2">
+            <HelpCircle className="w-5 h-5 text-[#b08d57]" />
+            Questions About {animal.name}
+          </h2>
+          <div className="space-y-3">
+            {faqs.map((faq, idx) => (
+              <details key={idx} className="group p-4 bg-white rounded-2xl border border-[#e5dec9] shadow-xs">
+                <summary className="font-semibold text-sm text-[#232320] cursor-pointer list-none flex items-center justify-between gap-3">
+                  {faq.question}
+                  <ChevronRight className="w-4 h-4 text-[#b08d57] shrink-0 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="text-xs text-gray-600 leading-relaxed mt-2.5">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

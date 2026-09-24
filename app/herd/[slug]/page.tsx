@@ -3,7 +3,8 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { ALL_PRODUCTS, AnimalProduct } from '@/lib/site-config';
 import JsonLd from '@/components/JsonLd';
-import { breadcrumbSchema, productSchema } from '@/lib/seo';
+import { breadcrumbSchema, productSchema, faqSchema } from '@/lib/seo';
+import { getProductFaqs } from '@/lib/product-faqs';
 import AnimalDetail from './animal-detail';
 
 interface AnimalDetailPageProps {
@@ -92,6 +93,8 @@ export default async function AnimalDetailPage({ params }: AnimalDetailPageProps
         ? '/paddock-companions'
         : '/shop';
 
+  const faqs = getProductFaqs(animal);
+
   return (
     <>
       <JsonLd
@@ -103,9 +106,10 @@ export default async function AnimalDetailPage({ params }: AnimalDetailPageProps
             { name: animal.categoryLabel, path: categoryPath },
             { name: animal.name, path: `/herd/${animal.slug}` },
           ]),
+          ...(faqs.length ? [faqSchema(faqs, `/herd/${animal.slug}`)] : []),
         ]}
       />
-      <AnimalDetail animal={animal} />
+      <AnimalDetail animal={animal} faqs={faqs} />
     </>
   );
 }
