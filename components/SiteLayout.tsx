@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { usePathname } from 'next/navigation';
 import { EnquiryProvider, useEnquiry } from '@/lib/enquiry-context';
 import Navbar from './Navbar';
 import EnquiryDrawer from './EnquiryDrawer';
@@ -69,6 +70,15 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
 }
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  // The admin portal and the client's hosted invoice are their own
+  // standalone surfaces (AdminShell / the pay page's own header) - they
+  // must never carry the marketing site's navbar, footer, chat widget or
+  // enquiry drawer. The client in particular is never meant to see the
+  // main site's chrome around their invoice.
+  const bare = pathname?.startsWith('/admin') || pathname?.startsWith('/pay');
+  if (bare) return <>{children}</>;
+
   return (
     <EnquiryProvider>
       <LayoutInner>{children}</LayoutInner>
