@@ -120,9 +120,15 @@ export default function AnimalCard({
               <span className="text-emerald-300 font-semibold flex items-center gap-1">
                 <span>✓</span> Non-Chondro Tested
               </span>
-            ) : (
+            ) : animal.chondroStatus?.includes('Carrier') ? (
               <span className="text-amber-300 font-semibold flex items-center gap-1">
                 <span>⚡</span> Chondro+ Dwarf Carrier
+              </span>
+            ) : (
+              // Anything else (e.g. "Pending DNA Test") is an unconfirmed status —
+              // show it as-is rather than defaulting to a claimed carrier result.
+              <span className="text-gray-300 font-semibold flex items-center gap-1">
+                <span>◐</span> {animal.chondroStatus || 'Chondro Status Pending'}
               </span>
             )}
           </span>

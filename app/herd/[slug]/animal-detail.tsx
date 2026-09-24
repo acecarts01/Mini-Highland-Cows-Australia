@@ -99,8 +99,12 @@ export default function AnimalDetail({ animal }: AnimalDetailProps) {
                   <span className="text-blue-300 font-semibold">✓ {animal.warrantyOrShelfLife}</span>
                 ) : animal.chondroStatus?.includes('Non-Carrier') ? (
                   <span className="text-emerald-300 font-semibold">✓ Non-Chondro Tested (Negative)</span>
-                ) : (
+                ) : animal.chondroStatus?.includes('Carrier') ? (
                   <span className="text-amber-300 font-semibold">⚡ Chondro+ Dwarfism Carrier</span>
+                ) : (
+                  // Anything else (e.g. "Pending DNA Test") is an unconfirmed status —
+                  // show it as-is rather than defaulting to a claimed carrier result.
+                  <span className="text-gray-300 font-semibold">◐ {animal.chondroStatus || 'Chondro Status Pending'}</span>
                 )}
               </span>
               <span className="text-gray-300">{animal.dobOrAge || animal.dimensionsOrPack}</span>
