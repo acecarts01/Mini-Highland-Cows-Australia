@@ -60,7 +60,7 @@ function shell(opts: { preheader: string; title: string; intro: string; fields: 
   <div style="display:none; max-height:0; overflow:hidden; opacity:0;">${escapeHtml(opts.preheader)}</div>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="${BRAND.parchment}" style="background-color:${BRAND.parchment};">
     <tr>
-      <td align="center" style="padding:24px 12px;">
+      <td align="center" bgcolor="${BRAND.parchment}" style="background-color:${BRAND.parchment}; padding:24px 12px;">
         <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" bgcolor="${BRAND.white}" style="background-color:${BRAND.white}; max-width:600px; width:100%; border-radius:12px; overflow:hidden; border:1px solid #e5dec9;">
           <tr>
             <td bgcolor="${BRAND.forest}" style="background-color:${BRAND.forest}; padding:20px 24px;">
