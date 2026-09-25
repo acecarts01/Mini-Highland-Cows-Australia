@@ -2,6 +2,7 @@
 
 import React, { useState, useRef } from 'react';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { SITE, CONTACT, CATEGORIES, BRANDS } from '@/lib/site-config';
 import {
@@ -22,7 +23,18 @@ import {
   HardDrive,
 } from 'lucide-react';
 import { useEnquiry } from '@/lib/enquiry-context';
-import { GoogleDriveSyncModal } from '@/components/GoogleDriveSyncModal';
+
+// Dynamically imported (ssr: false) so the Firebase Auth SDK - and the
+// ~93 KiB gstatic auth iframe it eagerly loads at module-init time, see
+// lib/firebase-auth.ts's top-level getAuth(app) call - never ships to
+// every page's bundle. It's an admin-only tool; only the admin who opens
+// the modal should pay for it. Confirmed via PageSpeed Insights: this was
+// the single largest "reduce unused JavaScript" + "efficient cache
+// lifetimes" flag on the public homepage before this fix.
+const GoogleDriveSyncModal = dynamic(
+  () => import('@/components/GoogleDriveSyncModal').then((mod) => mod.GoogleDriveSyncModal),
+  { ssr: false }
+);
 
 interface NavbarProps {
   enquiryCount?: number;
