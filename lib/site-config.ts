@@ -1745,6 +1745,11 @@ export const FAQ_ITEMS = [
     answer:
       'We accept secure direct Australian bank transfers (EFT/Osko) and cryptocurrency (Bitcoin BTC and Tether USDT with a 10% instant discount). Live cattle orders require a 20% holding deposit with the balance due prior to livestock carrier dispatch. Door-to-paddock livestock transport is arranged nationwide across QLD, NSW, VIC, SA, and WA.',
   },
+  {
+    question: 'What is your returns and refund policy?',
+    answer:
+      'Live cattle sales are final — no returns are accepted on livestock once an animal has been dispatched, in line with standard biosecurity practice across the industry. Cattle-care equipment and feed items can be returned unused, in original packaging, within 14 days of delivery for a refund; contact info@minihighlandcow.com.au to arrange a return.',
+  },
 ];
 
 export const BLOG_POSTS = [

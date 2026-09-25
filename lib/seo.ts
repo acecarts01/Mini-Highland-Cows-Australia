@@ -131,6 +131,20 @@ export function productSchema(animal: AnimalProduct) {
       areaServed: { '@type': 'Country', name: 'Australia' },
       priceValidUntil: `${new Date().getFullYear() + 1}-12-31`,
       validFrom: `${new Date().getFullYear()}-01-01`,
+      hasMerchantReturnPolicy: isLivestock
+        ? {
+            '@type': 'MerchantReturnPolicy',
+            returnPolicyCategory: 'https://schema.org/MerchantReturnNotPermitted',
+            applicableCountry: 'AU',
+          }
+        : {
+            '@type': 'MerchantReturnPolicy',
+            returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+            merchantReturnDays: 14,
+            returnMethod: 'https://schema.org/ReturnByMail',
+            returnFees: 'https://schema.org/ReturnShippingFees',
+            applicableCountry: 'AU',
+          },
       shippingDetails: {
         '@type': 'OfferShippingDetails',
         shippingRate: { '@type': 'MonetaryAmount', value: SHOP.shippingFee, currency: SITE.currency },
