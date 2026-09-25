@@ -58,6 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-AU" className="scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script src="/js/webmcp.js" defer />
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
       </head>
       <body
