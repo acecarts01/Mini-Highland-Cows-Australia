@@ -1,20 +1,19 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { ALL_PRODUCTS } from '@/lib/site-config';
+import { PAGE_CONTENT } from '@/lib/page-content';
 import JsonLd from '@/components/JsonLd';
-import { breadcrumbSchema, itemListSchema } from '@/lib/seo';
+import FaqAccordion from '@/components/FaqAccordion';
+import { breadcrumbSchema, itemListSchema, faqSchema } from '@/lib/seo';
 import BreedingFoundationClient from './breeding-client';
+
+const seo = PAGE_CONTENT['breeding-foundation'];
 
 export const metadata: Metadata = {
   title: 'Registered Mini Highland Heifers & Pairs',
   description:
     'Registered micro and miniature Highland breeding stock in Australia: Chondro-tested heifers, proven cows in calf, and foundation pairs from our Roma QLD stud. AHCS and IMCBR pedigree.',
-  keywords: [
-    'registered mini highland cattle',
-    'miniature highland heifer for sale australia',
-    'mini highland cow in calf',
-    'foundation breeding pair mini highland',
-  ],
+  keywords: [seo.primaryKeyword, ...seo.supportingKeywords],
   alternates: { canonical: '/breeding-foundation' },
   openGraph: {
     title: 'Breeding Foundation | Registered Miniature Highland Heifers & Pairs',
@@ -38,9 +37,14 @@ export default function BreedingFoundationPage() {
             { name: 'Available Herd', path: '/herd' },
             { name: 'Breeding Foundation', path: '/breeding-foundation' },
           ]),
+          faqSchema(seo.faqs, '/breeding-foundation'),
         ]}
       />
       <BreedingFoundationClient />
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-4">
+        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#232320]">Breeding Foundation FAQs</h2>
+        <FaqAccordion items={seo.faqs} />
+      </section>
     </>
   );
 }

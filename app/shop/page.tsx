@@ -1,20 +1,19 @@
 import React from 'react';
 import type { Metadata } from 'next';
 import { ALL_PRODUCTS } from '@/lib/site-config';
+import { PAGE_CONTENT } from '@/lib/page-content';
 import JsonLd from '@/components/JsonLd';
-import { breadcrumbSchema, itemListSchema } from '@/lib/seo';
+import FaqAccordion from '@/components/FaqAccordion';
+import { breadcrumbSchema, itemListSchema, faqSchema } from '@/lib/seo';
 import ShopClient from './shop-client';
+
+const seo = PAGE_CONTENT.shop;
 
 export const metadata: Metadata = {
   title: 'Shop Mini Highland Cows & Cattle Gear',
   description:
     'Browse every available micro and miniature Highland cow, steer, cow in calf, and premium cattle care product. Filter by size class, coat colour, Chondro status, and registry.',
-  keywords: [
-    'mini highland cows for sale australia',
-    'micro miniature highland cows',
-    'miniature cattle for sale qld',
-    'cattle grooming blower australia',
-  ],
+  keywords: [seo.primaryKeyword, ...seo.supportingKeywords],
   alternates: { canonical: '/shop' },
   openGraph: {
     title: 'Shop Miniature & Micro Highland Cattle | MHC PTY LTD',
@@ -49,6 +48,7 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
             { name: 'Home', path: '/' },
             { name: 'Shop', path: '/shop' },
           ]),
+          faqSchema(seo.faqs, '/shop'),
         ]}
       />
       <ShopClient
@@ -57,6 +57,10 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
         brand={first(params.brand, 'all')}
         q={first(params.q, '')}
       />
+      <section className="max-w-6xl mx-auto px-4 sm:px-6 py-10 space-y-4">
+        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#232320]">Shop FAQs</h2>
+        <FaqAccordion items={seo.faqs} />
+      </section>
     </>
   );
 }

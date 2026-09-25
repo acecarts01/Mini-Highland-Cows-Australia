@@ -5,7 +5,7 @@ import { FAQ_ITEMS, CONTACT } from '@/lib/site-config';
 import { HelpCircle, MessageCircle } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
 import { breadcrumbSchema, faqSchema } from '@/lib/seo';
-import FaqAccordion from './faq-accordion';
+import FaqAccordion from '@/components/FaqAccordion';
 
 export const metadata: Metadata = {
   title: 'Mini Highland Cow Buyer FAQ',

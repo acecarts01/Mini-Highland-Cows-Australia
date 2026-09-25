@@ -3,18 +3,17 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Ruler, ShieldCheck, AlertTriangle, CheckCircle2, Award, Info, Heart } from 'lucide-react';
 import JsonLd from '@/components/JsonLd';
-import { breadcrumbSchema } from '@/lib/seo';
+import FaqAccordion from '@/components/FaqAccordion';
+import { breadcrumbSchema, faqSchema } from '@/lib/seo';
+import { PAGE_CONTENT } from '@/lib/page-content';
+
+const seo = PAGE_CONTENT['chondro-guide'];
 
 export const metadata: Metadata = {
   title: 'Chondrodysplasia in Mini Highland Cattle',
   description:
     'What Chondro (chondrodysplasia) means in miniature Highland cattle, how carrier and non-carrier genetics differ, and why every MHC animal is DNA tested and disclosed. Australian buyer guide.',
-  keywords: [
-    'chondrodysplasia mini highland cattle',
-    'chondro negative miniature highland',
-    'mini highland cow dwarfism gene',
-    'micro highland cattle genetics Australia',
-  ],
+  keywords: [seo.primaryKeyword, ...seo.supportingKeywords],
   alternates: { canonical: '/chondro-guide' },
   openGraph: {
     title: 'Chondrodysplasia Genetics in Mini Highland Cattle',
@@ -29,10 +28,13 @@ export default function ChondroGuidePage() {
   return (
     <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto space-y-10">
       <JsonLd
-        data={breadcrumbSchema([
-          { name: 'Home', path: '/' },
-          { name: 'Chondro Genetics Protocol', path: '/chondro-guide' },
-        ])}
+        data={[
+          breadcrumbSchema([
+            { name: 'Home', path: '/' },
+            { name: 'Chondro Genetics Protocol', path: '/chondro-guide' },
+          ]),
+          faqSchema(seo.faqs, '/chondro-guide'),
+        ]}
       />
 
       {/* Breadcrumb */}
@@ -173,6 +175,11 @@ export default function ChondroGuidePage() {
             Ask Our Stud Geneticist →
           </Link>
         </div>
+      </div>
+
+      <div className="space-y-4 max-w-4xl">
+        <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#232320]">Chondro Testing FAQs</h2>
+        <FaqAccordion items={seo.faqs} />
       </div>
     </div>
   );
