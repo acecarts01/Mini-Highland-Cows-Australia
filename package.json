@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint .",
     "images": "node scripts/images.mjs",
+    "indexnow": "node scripts/indexnow-submit.mjs",
     "clean": "next clean"
   },
   "dependencies": {
