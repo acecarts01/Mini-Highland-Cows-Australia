@@ -59,6 +59,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-AU" className="scroll-smooth">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {/* Bing Webmaster Tools site verification (HTML meta tag method -
+            no DNS/registrar access needed). Do not remove; Bing re-checks
+            this on an ongoing basis to keep the property verified. */}
+        <meta name="msvalidate.01" content="F87FCDC8ECE60BCB60172DBD5BF60B04" />
         <script src="/js/webmcp.js" defer />
         <JsonLd data={[organizationSchema(), websiteSchema()]} />
       </head>
