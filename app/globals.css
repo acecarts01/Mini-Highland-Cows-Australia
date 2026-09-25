@@ -44,6 +44,20 @@ img, video, iframe {
   height: auto;
 }
 
+/* Respect the user's OS-level motion preference. Covers the two CSS
+   keyframe animations above and any plain CSS transition/animation.
+   motion/react's own JS-driven animations do NOT read this media query -
+   they're gated separately via <MotionConfig reducedMotion="user"> in
+   app/layout.tsx. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

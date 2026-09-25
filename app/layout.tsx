@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { MotionConfig } from 'motion/react';
 import './globals.css';
 import SiteLayout from '@/components/SiteLayout';
 import JsonLd from '@/components/JsonLd';
@@ -65,7 +66,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         className="bg-[#fbf9f5] text-[#232320] antialiased min-h-screen flex flex-col font-sans"
         suppressHydrationWarning
       >
-        <SiteLayout>{children}</SiteLayout>
+        {/* Makes every motion/react animation site-wide (order system,
+            blog, product galleries) respect the OS prefers-reduced-motion
+            setting automatically, rather than requiring each animated
+            component to opt in individually. */}
+        <MotionConfig reducedMotion="user">
+          <SiteLayout>{children}</SiteLayout>
+        </MotionConfig>
       </body>
     </html>
   );

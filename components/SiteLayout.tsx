@@ -26,13 +26,20 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#fbf9f5]">
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-100 focus:px-4 focus:py-2 focus:rounded-lg focus:bg-[#1c3028] focus:text-white focus:text-sm focus:font-bold"
+      >
+        Skip to content
+      </a>
+
       <Navbar
         enquiryCount={enquiryList.length}
         onOpenEnquiryDrawer={() => setIsDrawerOpen(true)}
         onOpenSearch={() => setIsSearchOpen(true)}
       />
 
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         {children}
       </main>
 
