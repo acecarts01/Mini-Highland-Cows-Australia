@@ -76,6 +76,7 @@ export default function Navbar({
   };
 
   const isShopActive = pathname.startsWith('/shop') || pathname.startsWith('/herd') || pathname.startsWith('/breeding-foundation') || pathname.startsWith('/paddock-companions');
+  const isHomepage = pathname === '/';
 
   return (
     <header className="sticky top-0 z-40 bg-[#fbf9f5] border-b border-[#e5dec9] shadow-xs">
@@ -87,24 +88,28 @@ export default function Navbar({
               <ShieldCheck className="w-3.5 h-3.5 text-[#e5c07b]" />
               VERIFIED ASIC BREEDER
             </span>
-            <span className="font-mono text-gray-300 text-[11px] sm:text-xs">
-              ABN: <strong className="text-white">{SITE.abn}</strong> | ACN: {SITE.acn}
-            </span>
-            {/* Direct ABN Verification Redirect Button */}
-            <a
-              href={SITE.abnLookupUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-[#b08d57] hover:bg-[#c9a367] text-[#232320] font-bold text-[10px] sm:text-[11px] transition-all shadow-xs hover:scale-105 active:scale-95 cursor-pointer"
-              title="Verify MHC PTY LTD directly on the Australian Business Register (abr.business.gov.au)"
-            >
-              <span>Verify ABN on ABR.gov.au</span>
-              <ExternalLink className="w-3 h-3 text-[#232320]" />
-            </a>
-            <span className="hidden md:inline-flex items-center gap-1 text-gray-400">
-              <MapPin className="w-3 h-3 text-[#e5c07b]" />
-              {SITE.locality}
-            </span>
+            {!isHomepage && (
+              <>
+                <span className="font-mono text-gray-300 text-[11px] sm:text-xs">
+                  ABN: <strong className="text-white">{SITE.abn}</strong> | ACN: {SITE.acn}
+                </span>
+                {/* Direct ABN Verification Redirect Button */}
+                <a
+                  href={SITE.abnLookupUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded bg-[#b08d57] hover:bg-[#c9a367] text-[#232320] font-bold text-[10px] sm:text-[11px] transition-all shadow-xs hover:scale-105 active:scale-95 cursor-pointer"
+                  title="Verify MHC PTY LTD directly on the Australian Business Register (abr.business.gov.au)"
+                >
+                  <span>Verify ABN on ABR.gov.au</span>
+                  <ExternalLink className="w-3 h-3 text-[#232320]" />
+                </a>
+                <span className="hidden md:inline-flex items-center gap-1 text-gray-400">
+                  <MapPin className="w-3 h-3 text-[#e5c07b]" />
+                  {SITE.locality}
+                </span>
+              </>
+            )}
           </div>
 
           <div className="flex items-center gap-3 sm:gap-4 text-[11px]">
@@ -460,19 +465,23 @@ export default function Navbar({
           <div className="p-3.5 bg-white rounded-xl border border-[#e5dec9] text-xs space-y-2">
             <div className="flex items-center justify-between">
               <p className="font-bold text-[#232320]">MHC PTY LTD (ROMA QLD)</p>
-              <span className="text-[10px] bg-emerald-100 text-emerald-800 font-semibold px-1.5 py-0.5 rounded">Verified ABN</span>
+              <span className="text-[10px] bg-emerald-100 text-emerald-800 font-semibold px-1.5 py-0.5 rounded">Verified ASIC Breeder</span>
             </div>
-            <p className="text-gray-600 font-mono text-[11px]">ABN: 23 158 390 973 • ACN: 158 390 973</p>
-            {/* Direct ABN Verification Redirect Button */}
-            <a
-              href={SITE.abnLookupUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-lg bg-[#b08d57] hover:bg-[#977340] text-[#232320] hover:text-white font-bold text-xs transition-colors shadow-xs"
-            >
-              <span>Verify ABN on Official Register (abr.business.gov.au)</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
+            {!isHomepage && (
+              <>
+                <p className="text-gray-600 font-mono text-[11px]">ABN: 23 158 390 973 • ACN: 158 390 973</p>
+                {/* Direct ABN Verification Redirect Button */}
+                <a
+                  href={SITE.abnLookupUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-lg bg-[#b08d57] hover:bg-[#977340] text-[#232320] hover:text-white font-bold text-xs transition-colors shadow-xs"
+                >
+                  <span>Verify ABN on Official Register (abr.business.gov.au)</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </>
+            )}
             <p className="text-emerald-700 font-medium text-[11px]">✓ 100% Miniature &amp; Micro Highland Cattle</p>
           </div>
 
