@@ -12,7 +12,7 @@ const seo = PAGE_CONTENT.home;
 export const metadata: Metadata = {
   title: 'Mini Highland Cows for Sale Australia',
   description:
-    'Buy registered miniature and micro Scottish Highland cattle in Australia. Chondro-tested heifers, halter-trained pet steers, and cows in calf from our Roma QLD stud. Nationwide delivery, PIC & NLIS handled.',
+    'Registered miniature & micro Scottish Highland cattle for sale in Roma QLD. Chondro-tested heifers, pet steers & cows in calf, delivered Australia-wide.',
   keywords: [seo.primaryKeyword, ...seo.supportingKeywords],
   alternates: { canonical: '/' },
 };
