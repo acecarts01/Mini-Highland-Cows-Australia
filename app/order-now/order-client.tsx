@@ -1,7 +1,6 @@
 'use client';
 
-import React, { useState, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
@@ -31,14 +30,15 @@ import {
   Info,
 } from 'lucide-react';
 
-function OrderNowContent() {
-  const searchParams = useSearchParams();
+interface OrderNowContentProps {
+  animalParam?: string;
+}
+
+function OrderNowContent({ animalParam }: OrderNowContentProps) {
   // Every "Order Now" link site-wide (AnimalCard, AnimalModal) passes the
   // animal's id, e.g. /order-now?animal=mhc-70 — not its slug. This lookup
   // must check both, or every one of those links silently falls through to
   // the mhc-01 default regardless of which product was actually clicked.
-  const animalParam = searchParams.get('animal') || searchParams.get('slug');
-
   const initialAnimal =
     ALL_PRODUCTS.find((p) => p.id === animalParam) ||
     ALL_PRODUCTS.find((p) => p.slug === animalParam) ||
@@ -840,10 +840,6 @@ function OrderNowContent() {
   );
 }
 
-export default function OrderNowClient() {
-  return (
-    <Suspense fallback={<div className="p-12 text-center text-sm text-gray-500">Loading Order Portal...</div>}>
-      <OrderNowContent />
-    </Suspense>
-  );
+export default function OrderNowClient({ animalParam }: OrderNowContentProps) {
+  return <OrderNowContent animalParam={animalParam} />;
 }

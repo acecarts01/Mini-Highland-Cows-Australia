@@ -1,16 +1,17 @@
 'use client';
 
-import React, { useState, useMemo, Suspense } from 'react';
+import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { useSearchParams } from 'next/navigation';
 import { ALL_PRODUCTS } from '@/lib/site-config';
 import AnimalCard from '@/components/AnimalCard';
 import { useEnquiry } from '@/lib/enquiry-context';
 import { Search, Ruler } from 'lucide-react';
 
-function SearchPageContent() {
-  const searchParams = useSearchParams();
-  const initialQuery = searchParams.get('q') || '';
+interface SearchClientProps {
+  initialQuery?: string;
+}
+
+function SearchPageContent({ initialQuery = '' }: SearchClientProps) {
   const [query, setQuery] = useState(initialQuery);
   const { enquiryList, toggleEnquiry, setInspectedAnimal } = useEnquiry();
 
@@ -78,10 +79,6 @@ function SearchPageContent() {
   );
 }
 
-export default function SearchClient() {
-  return (
-    <Suspense fallback={<div className="p-12 text-center text-sm text-gray-500">Loading catalog search...</div>}>
-      <SearchPageContent />
-    </Suspense>
-  );
+export default function SearchClient({ initialQuery }: SearchClientProps) {
+  return <SearchPageContent initialQuery={initialQuery} />;
 }

@@ -11,6 +11,14 @@ export const metadata: Metadata = {
   robots: { index: false, follow: true },
 };
 
-export default function SearchPage() {
-  return <SearchClient />;
+interface SearchPageProps {
+  searchParams: Promise<{ q?: string }>;
+}
+
+export default async function SearchPage({ searchParams }: SearchPageProps) {
+  // Read `q` on the server and pass it as a prop — calling useSearchParams()
+  // in the client component instead opts the page out of the server render,
+  // shipping crawlers the Suspense fallback with no H1 and no results.
+  const { q } = await searchParams;
+  return <SearchClient initialQuery={q} />;
 }
