@@ -58,6 +58,7 @@ export function GET() {
     `- [API catalog](${absoluteUrl('/.well-known/api-catalog')}): RFC 9727 linkset of machine-readable resources.`,
     `- [Agent skills index](${absoluteUrl('/.well-known/agent-skills/index.json')}): discoverable site actions for agents.`,
     `- [MCP server card](${absoluteUrl('/.well-known/mcp/server-card.json')}): capability declaration (read-only, no live tool endpoint yet).`,
+    `- [ARD manifest](${absoluteUrl('/.well-known/ai-catalog.json')}): Agentic Resource Discovery capability catalog.`,
     `- [Auth](${absoluteUrl('/auth.md')}): confirms no authentication is required for any public resource.`,
     `- [Sitemap](${absoluteUrl('/sitemap.xml')}): full URL list.`,
   ];

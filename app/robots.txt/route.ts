@@ -21,16 +21,28 @@ Allow: /
 User-Agent: ChatGPT-User
 Allow: /
 
+User-Agent: OAI-SearchBot
+Allow: /
+
 User-Agent: ClaudeBot
 Allow: /
 
 User-Agent: Claude-Web
 Allow: /
 
+User-Agent: anthropic-ai
+Allow: /
+
 User-Agent: PerplexityBot
 Allow: /
 
+User-Agent: Perplexity-User
+Allow: /
+
 User-Agent: Applebot
+Allow: /
+
+User-Agent: Applebot-Extended
 Allow: /
 
 User-Agent: Amazonbot
@@ -42,7 +54,28 @@ Allow: /
 User-Agent: Meta-ExternalAgent
 Allow: /
 
+User-Agent: Meta-ExternalFetcher
+Allow: /
+
 User-Agent: cohere-ai
+Allow: /
+
+User-Agent: Bytespider
+Allow: /
+
+User-Agent: Diffbot
+Allow: /
+
+User-Agent: PetalBot
+Allow: /
+
+User-Agent: YouBot
+Allow: /
+
+User-Agent: DuckAssistBot
+Allow: /
+
+User-Agent: Ai2Bot
 Allow: /
 
 Host: ${absoluteUrl('/')}

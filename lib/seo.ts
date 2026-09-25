@@ -1,7 +1,7 @@
 // lib/seo.ts
 // Canonical URL resolution + JSON-LD builders for structured data.
 
-import { SITE, CONTACT, AnimalProduct } from './site-config';
+import { SITE, CONTACT, SHOP, AnimalProduct, getAnimalOrderSpecs } from './site-config';
 
 /**
  * Absolute origin for the deployed site, no trailing slash.
@@ -46,6 +46,8 @@ export function organizationSchema() {
     description: SITE.description,
     email: CONTACT.email,
     telephone: CONTACT.phone,
+    image: [absoluteUrl('/og-default.png')],
+    logo: absoluteUrl('/og-default.png'),
     address: POSTAL_ADDRESS,
     areaServed: { '@type': 'Country', name: 'Australia' },
     identifier: [
@@ -79,10 +81,17 @@ export function websiteSchema() {
   };
 }
 
+/** Parses "5–10 Business Days" style strings into {min, max} day counts. */
+function parseTransitDays(timeframe: string): { min: number; max: number } {
+  const match = timeframe.match(/(\d+)\D+(\d+)/);
+  return match ? { min: Number(match[1]), max: Number(match[2]) } : { min: 1, max: 14 };
+}
+
 /** Product + Offer for a single animal or equipment item. */
 export function productSchema(animal: AnimalProduct) {
   const url = absoluteUrl(`/herd/${animal.slug}`);
   const isLivestock = animal.itemType !== 'equipment' && animal.itemType !== 'feed';
+  const { min: minDays, max: maxDays } = parseTransitDays(getAnimalOrderSpecs(animal).shippingTimeframe);
 
   const additionalProperty = [
     animal.sizeClass && { name: 'Size class', value: animal.sizeClass },
@@ -121,6 +130,16 @@ export function productSchema(animal: AnimalProduct) {
       seller: { '@id': absoluteUrl('/#organization') },
       areaServed: { '@type': 'Country', name: 'Australia' },
       priceValidUntil: `${new Date().getFullYear() + 1}-12-31`,
+      validFrom: `${new Date().getFullYear()}-01-01`,
+      shippingDetails: {
+        '@type': 'OfferShippingDetails',
+        shippingRate: { '@type': 'MonetaryAmount', value: SHOP.shippingFee, currency: SITE.currency },
+        shippingDestination: { '@type': 'DefinedRegion', addressCountry: 'AU' },
+        deliveryTime: {
+          '@type': 'ShippingDeliveryTime',
+          transitTime: { '@type': 'QuantitativeValue', minValue: minDays, maxValue: maxDays, unitCode: 'DAY' },
+        },
+      },
     },
   };
 }

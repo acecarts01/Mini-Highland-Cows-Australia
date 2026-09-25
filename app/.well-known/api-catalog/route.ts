@@ -37,6 +37,11 @@ export function GET() {
         type: 'text/plain',
         title: 'LLM-readable brand and fact sheet',
       },
+      {
+        anchor: absoluteUrl('/.well-known/ai-catalog.json'),
+        type: 'application/json',
+        title: 'ARD (Agentic Resource Discovery) capability manifest',
+      },
     ],
   };
 
