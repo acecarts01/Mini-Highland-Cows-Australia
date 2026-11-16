@@ -124,7 +124,7 @@ export default function ContactClient() {
                 <Phone className="w-4 h-4 text-[#b08d57] shrink-0 mt-0.5" />
                 <div>
                   <strong className="block text-sm text-[#232320]">Telephone Direct</strong>
-                  <a href={`tel:${CONTACT.phone}`} className="hover:underline">{CONTACT.phone}</a>
+                  <a href={`tel:${CONTACT.whatsapp}`} className="hover:underline">{CONTACT.phone}</a>
                 </div>
               </div>
 

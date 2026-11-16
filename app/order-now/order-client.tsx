@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
+import CryptoWalletPicker from '@/components/CryptoWalletPicker';
 import {
   ALL_PRODUCTS,
   AnimalProduct,
@@ -321,7 +322,7 @@ function OrderNowContent({ animalParam }: OrderNowContentProps) {
               </p>
               <div className="flex flex-wrap gap-2 pt-1">
                 <a
-                  href={`tel:${CONTACT.phone}`}
+                  href={`tel:${CONTACT.whatsapp}`}
                   className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-semibold text-[11px]"
                 >
                   Call {CONTACT.phone}
@@ -736,7 +737,7 @@ function OrderNowContent({ animalParam }: OrderNowContentProps) {
                             className="text-emerald-700"
                           />
                         </div>
-                        <p className="text-[11px] text-gray-600 mt-1">Instant settlement in BTC, USDT, or ETH.</p>
+                        <p className="text-[11px] text-gray-600 mt-1">Pay in BTC, USDT, ETH, SOL, XRP and more.</p>
                         <strong className="text-xs text-emerald-800 mt-2 block font-serif">
                           ${cryptoPrice.toLocaleString()} AUD
                         </strong>
@@ -766,6 +767,7 @@ function OrderNowContent({ animalParam }: OrderNowContentProps) {
                         </strong>
                       </label>
                     </div>
+                    {formData.paymentMethod === 'crypto' && <CryptoWalletPicker />}
                   </div>
 
                   {/* Actions */}

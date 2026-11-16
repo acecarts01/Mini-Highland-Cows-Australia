@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
+import CryptoWalletPicker from '@/components/CryptoWalletPicker';
 import {
   AnimalProduct,
   CONTACT,
@@ -684,7 +685,7 @@ export default function OrderModal({ animal, isOpen, onClose }: OrderModalProps)
                           className="text-emerald-700"
                         />
                       </div>
-                      <p className="text-[11px] text-gray-600 mt-1">Instant settlement via BTC, USDT, or ETH.</p>
+                      <p className="text-[11px] text-gray-600 mt-1">Pay in BTC, USDT, ETH, SOL, XRP and more.</p>
                       <strong className="text-xs text-emerald-800 mt-2 block font-serif">
                         ${cryptoPrice.toLocaleString()} AUD
                       </strong>
@@ -714,6 +715,7 @@ export default function OrderModal({ animal, isOpen, onClose }: OrderModalProps)
                       </strong>
                     </label>
                   </div>
+                  {formData.paymentMethod === 'crypto' && <CryptoWalletPicker />}
                 </div>
 
                 {/* Final Submit & WhatsApp Buttons */}

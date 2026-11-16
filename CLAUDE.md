@@ -140,8 +140,13 @@ any product photo.
 
 ## Known open items (not yet resolved, don't assume otherwise)
 
-- **Real phone number**: `CONTACT.phone` / `whatsapp` in `lib/site-config.ts`
-  are still the placeholder `+61 400 000 000`. Don't invent one.
+- **Phone number — resolved 16 Nov 2026**: `CONTACT.phone` / `whatsapp` are
+  now the owner's official +61 480 804 189. `CRYPTO.wallets` holds the 11
+  owner-supplied receive addresses (checksum-checked); only change them on
+  the owner's explicit instruction.
+- **Blog + product keyword rules — audit 16 Nov 2026**: 0/26 posts and 0/50
+  products pass (see `docs/keyword-blog-audit-2026-11-16.html`). Refresh
+  plan and fresh SEMrush pull awaiting owner decisions.
 - **Equipment/feed products** (10 items, `mhc-eq-*`): flagged to the owner
   as possibly out of scope ("we sell only cows") — no decision made yet on
   whether to remove them. Don't remove or keep them without checking.

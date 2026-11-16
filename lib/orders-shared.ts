@@ -67,7 +67,7 @@ export const STATUS_LABEL: Record<OrderStatus, string> = {
 
 const PAYMENT_LABEL: Record<PaymentMethod, string> = {
   bank: 'Bank EFT / PayID',
-  crypto: 'Crypto - BTC / USDT (10% discount applied)',
+  crypto: 'Crypto - BTC, USDT, ETH & more (10% discount applied)',
   deposit: '20% Holding Deposit',
 };
 export const paymentLabel = (p: PaymentMethod) => PAYMENT_LABEL[p];

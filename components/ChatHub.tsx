@@ -40,7 +40,7 @@ export default function ChatHub() {
             </a>
 
             <a
-              href={`tel:${CONTACT.phone}`}
+              href={`tel:${CONTACT.whatsapp}`}
               className="flex items-center gap-2 w-full p-2 rounded-xl bg-gray-50 hover:bg-gray-100 text-gray-800 text-xs font-medium border border-gray-200 transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-[#b08d57]" />

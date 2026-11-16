@@ -65,21 +65,32 @@ export const SITE = {
   picNlisText: 'All livestock sales require valid buyer PIC (Property Identification Code) and include NLIS electronic RFID transfer as mandated by Biosecurity Australia & MLA.',
 };
 
-// Crypto settlement wallets for the admin settlement terminal and the
-// client pay page. Deliberately empty until the business owner pastes in
-// real, verified addresses — a wrong crypto address sends funds somewhere
-// unrecoverable, so both screens hide the crypto payment option entirely
-// while this list is empty rather than showing a placeholder.
+// Crypto settlement wallets: owner-supplied, receive-only addresses shown to
+// customers on the order forms (with QR) and used by the admin settlement
+// terminal and client pay page. Checksums were verified on 16 Nov 2026
+// (BTC/LTC bech32, BCH cashaddr, DOGE/TRX/XRP base58check, SOL key length;
+// ETH-family addresses are format-checked only). A wrong address sends funds
+// somewhere unrecoverable, so only change these on the owner's instruction.
 export const CRYPTO = {
-  wallets: [] as { key: string; asset: string; network: string; address: string }[],
+  wallets: [
+    { key: 'btc', asset: 'BTC', network: 'Bitcoin', address: 'bc1qdhgnlpctw37vg825eejkknurpm23a5lsthfdhg' },
+    { key: 'eth', asset: 'ETH', network: 'Ethereum (ERC-20)', address: '0x2629c24d3720E5A24adBe7Bde4677334B559C36D' },
+    { key: 'usdt-trc20', asset: 'USDT', network: 'Tron (TRC-20)', address: 'TVQGzSJKcHXTwX6Fn8CPb6A5PmAkoCFZRh' },
+    { key: 'usdt-erc20', asset: 'USDT', network: 'Ethereum (ERC-20)', address: '0x2629c24d3720E5A24adBe7Bde4677334B559C36D' },
+    { key: 'bnb-bep20', asset: 'BNB', network: 'BNB Smart Chain (BEP-20)', address: '0x2629c24d3720E5A24adBe7Bde4677334B559C36D' },
+    { key: 'sol', asset: 'SOL', network: 'Solana', address: 'GdNUybxyu8cBY7snHAZsdopH6WKdHBVXo5d79mR9PhJ' },
+    { key: 'xrp', asset: 'XRP', network: 'XRP Ledger', address: 'rBiWxdA3a27BXYC9ZwQRTyFdXNWaEjLfBr' },
+    { key: 'ltc', asset: 'LTC', network: 'Litecoin', address: 'ltc1q65vx7y70uxtemnmvu3grsfnuydngfzk7ngqx82' },
+    { key: 'doge', asset: 'DOGE', network: 'Dogecoin', address: 'DQiMuCNgLSaVzeJuw8TL5CMkYKtdpst5Rc' },
+    { key: 'bch', asset: 'BCH', network: 'Bitcoin Cash', address: 'qq9l4ntg9nf9a7qz5h9he7mh4ktzf6prrgcg7htn9t' },
+    { key: 'trx', asset: 'TRX', network: 'Tron (TRC-20)', address: 'TVQGzSJKcHXTwX6Fn8CPb6A5PmAkoCFZRh' },
+  ] as { key: string; asset: string; network: string; address: string }[],
 };
 
-// TODO: phone / whatsapp are still placeholders — a real Australian number
-// is needed before launch. Do not invent one; get it from the business owner.
 export const CONTACT = {
   email: 'info@minihighlandcow.com.au',
-  phone: '+61 400 000 000',
-  whatsapp: '+61400000000',
+  phone: '+61 480 804 189',
+  whatsapp: '+61480804189',
   location: 'Roma, Queensland 4455, Australia',
   operatingHours: 'Mon - Sat: 8:00am - 6:00pm AEST',
 };
